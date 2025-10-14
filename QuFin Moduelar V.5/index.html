@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="scripts/inactivity-handler.js"></script>
+    <script src="scripts/backend-integration.js" type="module"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="QuFin: AI-powered trading intelligence platform for modern investors. Leverage quantum-inspired algorithms and alternative data for unmatched market insights." />
+    <meta name="keywords" content="QuFin, AI trading, financial analytics, investment platform, quantum algorithms, alternative data, market intelligence" />
+    <meta property="og:title" content="QuFin - AI-Powered Trading Intelligence" />
+    <meta property="og:description" content="Discover cutting-edge AI tools for trading, analytics, and market data. Start your journey with QuFin today." />
+    <meta property="og:image" content="logo.png" />
+    <meta property="og:url" content="https://www.qufin.ai" />
+    <meta name="robots" content="index, follow" />
+    <title>QuFin - AI-Powered Trading Intelligence</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.10/babel.min.js"></script>
+    <link rel="stylesheet" href="styles/fontawesome-free-7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add D3.js and TopoJSON for the world map -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-geo@3"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+
+                        },
+                        secondary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    </head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100">
+    <div id="root"></div>
+
+    <script type="text/babel" data-presets="react" data-type="module">
+        // Navigation data
+        const navigationData = [
+            // Navigation links use absolute paths for cross-page navigation from index.html
+            { name: 'Home', href: '/QuFin%20Moduelar%20V.5/index.html', icon: 'fa-home' },
+            { 
+                name: 'Product', 
+                href: '/QuFin%20Moduelar%20V.5/pages/product.html', 
+                icon: 'fa-box',
+                dropdown: [   
+                    'AI Score Grid', 'CurrenQ™', 'EnergAI™', 'MetalAI™', 'FuturAI™', 
+                    'Commoditas™', 'Equivestia™', 'Indicem™', 'CryptAI™', 'TradeFit Quotient™',
+                    'Corelation Matrix™', 'Country Matrix™', 'CrossFire AI™', 'NeuroLock™',
+                    'Strategy DNA™', 'Signal Sieve™', 'Capital Guard™', 'Glass Book™']},
+            
+            { name: 'Pricing', href: '/QuFin%20Moduelar%20V.5/pages/pricing.html', icon: 'fa-dollar-sign' },
+            { 
+                name: 'AI Score Grid', 
+                href: '/QuFin%20Moduelar%20V.5/pages/aiscoregrid.html', 
+                icon: 'fa-chart-line',
+                dropdown: [
+                    'Forex Scores', 'Energies Scores', 'Metals Scores', 'Futures Scores',
+                    'Commodity Scores', 'Stock Scores', 'Indices Scores', 'Crypto Scores',
+                    'ETF Scores', 'Bonds Scores', 'Country Scores']},
+            { 
+                name: 'AI Strategies', 
+                href: '/QuFin%20Moduelar%20V.5/pages/aistrategies.html', 
+                icon: 'fa-cogs',
+                dropdown: [
+                    
+                    {   name: 'Equity Strategies',
+                        items: ['Long/Short Equity', 'Equity Market Neutral', 'Short Bias']},
+                    {   name: 'Event-Driven',
+                        items: ['Distressed Securities', 'Restructuring Arbitrage']},
+                    {   name: 'Macro Strategy',
+                        items: ['Global Macro Strategy', 'Commodity Trading Strategy']},
+                    {   name: 'Relative Value Arbitrage',
+                        items: ['Convertible Arbitrage', 'Fixed Income Arbitrage', 'Volatility Arbitrage', 'Merger Arbitrage']},
+                    {   name: 'Quantitative Strategy',
+                        items: ['Statistical Arbitrage', 'High Frequency Trading', 'Machine Learning Models', 'Factor Investing']},
+                    {   name: 'Alternative Data Strategy',
+                        items: ['Michael Burry', 'Lobbying Spending Growth', 'Congress Sells',
+                                'Wikipedia Most-Viewed', 'Sector Weighted DC Insider', 'Josh Gottheimer',
+                                'Energy and Commerce Committee (House)', 'Top Gov Contract Recipients']}]},
+            { 
+                name: 'Global Data', 
+                href: '/QuFin%20Moduelar%20V.5/pages/globaldata.html', 
+                icon: 'fa-globe',
+                dropdown: [
+                    {   name: 'Northern America',
+                        items: ['Canada', 'United States']},
+                    {   name: 'South America',
+                        items: ['Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador',
+                                'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Mexico', 'Venezuela']},
+                    {   name: 'Europe',
+                        items: [
+                                'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic',
+                                'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary',
+                                'Iceland', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg',
+                                'Malta', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania',
+                                'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'United Kingdom']},
+                    {   name: 'Asia',
+                        items: [
+                                'Afghanistan', 'Armenia', 'Azerbaijan', 'Bahrain', 'Bangladesh',
+                                'Bhutan', 'Brunei Darussalam', 'Cambodia', 'China', 'Georgia',
+                                'India', 'Indonesia', 'Iran', 'Iraq']},
+                    {   name: 'Africa',
+                        items: [
+                                'Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi',
+                                'Cabo Verde', 'Cameroon', 'Central African Republic', 'Chad', 'Comoros',
+                                'Congo', 'Djibouti', 'Egypt', 'Equatorial Guinea',
+                                'Eritrea', 'Eswatini', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea',
+                                'Guinea-Bissau', 'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya',
+                                'Madagascar', 'Malawi', 'Mali', 'Mauritania', 'Mauritius', 'Morocco',
+                                'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Rwanda', 'Sao Tome and Principe',
+                                'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa',
+                                'South Sudan', 'Sudan', 'Togo', 'Tunisia', 'Uganda', 'Tanzania',
+                                'Zambia', 'Zimbabwe']},
+                    { 
+                        name: 'Oceania',
+                        items: [
+                                'Australia', 'Fiji', 'Kiribati', 'New Caledonia','New Zealand',
+                                'Palau', 'Papua New Guinea','Samoa', 'Solomon Islands','Tonga','Tuvalu','Vanuatu']},
+                    { 
+                        name: 'Middle East & North Africa',
+                        items: [
+                                'Algeria', 'Bahrain', 'Djibouti', 'Egypt', 'Iran', 'Iraq', 'Israel','Jordan','Kuwait',
+                                'Lebanon','Libya','Malta','Morocco','Oman','Qatar','Saudi Arabia','Syria','Tunisia',
+                                'United Arab Emirates','Yemen']},
+                    { 
+                        name: 'European Union',
+                        items: [
+                                'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic',
+                                'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary',
+                                'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 
+                                'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden']}
+                        ]},
+            { 
+                name: 'Resources', 
+                href: '/QuFin%20Moduelar%20V.5/pages/resources.html', 
+                icon: 'fa-book',
+                dropdown: [
+                    'Backtesting', 'AI Explainability', 'Global Heatmap', 'Global Sentiment',
+                    'CoT Crystalizer (AI)', 'AI Trading Academy', 'Traders\' Community',
+                    'Economic Calendar', 'Reports', 'Black Swan Grounds', 'Black Pools Decoder',
+                    'Market Meme Stock']},
+        ];
+
+        // Feature cards data
+        const features = [
+            {
+                title: 'AI Score Grid',
+                description: 'Evaluate investment opportunities across assets with our proprietary scoring system.',
+                icon: 'fa-chart-line',
+                href: 'pages/aiscoregrid.html'
+            },
+            {
+                title: 'AI Strategies',
+                description: 'Access pre-built algorithmic strategies or build your own for optimized trading.',
+                icon: 'fa-cogs',
+                href: 'pages/aistrategies.html'
+            },
+            {
+                title: 'Global Data',
+                description: 'Comprehensive market data and economic indicators from around the world.',
+                icon: 'fa-globe',
+                href: 'pages/globaldata.html'
+            }
+        ];
+
+        // Market data
+        const marketData = [
+            { name: 'S&P 500', symbol: 'US Equities', value: '4,567.89', change: '+1.24%', icon: 'fa-dollar-sign', color: 'blue' },
+            { name: 'Bitcoin', symbol: 'Cryptocurrency', value: '$63,452.34', change: '+3.72%', icon: 'fa-coins', color: 'green' },
+            { name: 'Crude Oil', symbol: 'Commodities', value: '$78.45', change: '-0.87%', icon: 'fa-gas-pump', color: 'yellow' },
+            { name: 'EUR/USD', symbol: 'Forex', value: '1.0845', change: '+0.12%', icon: 'fa-euro-sign', color: 'purple' }
+        ];
+
+        // Country economic scores data (placeholder)
+        const countryScores = {
+            "USA": 85, "CAN": 78, "MEX": 65, "BRA": 72, "ARG": 60, "GBR": 82, "FRA": 79, 
+            "DEU": 83, "ITA": 70, "ESP": 68, "RUS": 55, "CHN": 80, "IND": 73, "JPN": 81, 
+            "AUS": 79, "ZAF": 63, "NGA": 58, "EGY": 57, "SAU": 69, "TUR": 66, "SWE": 84,
+            "NOR": 83, "FIN": 82, "DNK": 81, "NLD": 82, "BEL": 79, "CHE": 86, "AUT": 78,
+            "POL": 71, "UKR": 53, "KAZ": 62, "IDN": 67, "THA": 68, "VNM": 66, "PHL": 64,
+            "MYS": 70, "SGP": 87, "KOR": 80, "PRK": 30, "IRN": 45, "IRQ": 48, "ISR": 75,
+            "PSE": 40, "DZA": 56, "LBY": 47, "MAR": 61, "TUN": 59, "GHA": 62, "KEN": 63,
+            "ETH": 55, "ZWE": 45, "MOZ": 52, "MDG": 50, "TZA": 58, "COD": 43, "COG": 46,
+            "CMR": 57, "AGO": 54, "NAM": 64, "BWA": 68, "ZMB": 56, "MWI": 49, "UGA": 57,
+            "SDN": 44, "SSD": 35, "NER": 42, "TCD": 41, "MLI": 45, "SEN": 59, "GMB": 56,
+            "GIN": 50, "GNB": 48, "SLE": 49, "LBR": 47, "CIV": 58, "GHA": 62, "BEN": 56,
+            "NGA": 58, "CAF": 40, "TGO": 53, "BFA": 52, "MRT": 54, "ERI": 43, "DJI": 55,
+            "SOM": 35, "BDI": 44, "RWA": 60, "UGA": 57
+        };
+
+        // Time Selector Component
+        function TimeSelector() {
+            const [activePeriod, setActivePeriod] = React.useState('1D');
+            const periods = ['1D', '1W', '1M', '1Y'];
+
+            return React.createElement(
+                'div',
+                { className: 'flex space-x-2' },
+                periods.map(period => 
+                    React.createElement(
+                        'button',
+                        {
+                            key: period,
+                            onClick: () => setActivePeriod(period),
+                            className: `px-3 py-1 text-sm rounded-lg ${
+                                activePeriod === period
+                                    ? 'bg-primary-500 text-white'
+                                    : 'bg-gray-100 dark:bg-slate-700'
+                            }`
+                        },
+                        period
+                    )
+                )
+            );
+        }
+
+        // World Map Component
+        function WorldMap() {
+            const mapContainer = React.useRef(null);
+            const [selectedCountry, setSelectedCountry] = React.useState(null);
+            const [tooltip, setTooltip] = React.useState({ visible: false, content: "", x: 0, y: 0 });
+
+            React.useEffect(() => {
+                if (!mapContainer.current) return;
+
+                // Set up the map dimensions
+                const width = mapContainer.current.clientWidth;
+                const height = mapContainer.current.clientHeight;
+
+                // Create SVG container
+                const svg = d3.select(mapContainer.current)
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                // Create a tooltip (styled to match site theme)
+                const tooltipDiv = d3.select("body")
+                    .append("div")
+                    .attr("class", "country-tooltip")
+                    .style("position", "absolute")
+                    .style("pointer-events", "none")
+                    .style("opacity", 0)
+                    .style("background", "rgba(15,23,42,0.98)")
+                    .style("color", "#fff")
+                    .style("padding", "10px 12px")
+                    .style("border-radius", "8px")
+                    .style("font-size", "13px")
+                    .style("box-shadow", "0 8px 30px rgba(2,6,23,0.5)")
+                    .style("transition", "opacity 180ms ease, transform 180ms ease")
+                    .style("transform", "translateY(6px)")
+                    .style("will-change", "transform, opacity, left, top")
+                    .style("z-index", 10000);
+
+                // Create a projection
+                const projection = d3.geoNaturalEarth1()
+                    .scale(width / 6.5)
+                    .translate([width / 2, height / 2]);
+
+                // Create a path generator
+                const path = d3.geoPath().projection(projection);
+
+                // Create a color scale (yellow = low, orange = mid, red = high) per your screenshot
+                const colorScale = d3.scaleLinear()
+                    .domain([0, 50, 100])
+                    .range(["#fef3c7", "#ff8a00", "#ef4444"]) // yellow -> orange -> red
+                    .interpolate(d3.interpolateRgb);
+
+                // Placeholder short-code input (easy to replace with real data later).
+                // This will populate the global `countryScores` object with ISO_A3 keys
+                // for the minimal placeholder the user requested without removing existing data.
+                try {
+                    const placeholderInput = { US: 75, IN: 90, AE: 60, FR: 45 };
+                    const shortToA3 = { US: 'USA', IN: 'IND', AE: 'ARE', FR: 'FRA' };
+                        Object.keys(placeholderInput).forEach(a2 => { 
+                        const a3 = shortToA3[a2] || a2;
+                        // Only set if not already present so we don't overwrite real data
+                        if (typeof countryScores[a3] === 'undefined') {
+                            countryScores[a3] = placeholderInput[a2];
+                        }
+                    });
+                } catch (e) {
+                    // noop if countryScores isn't present or other issue
+                }
+
+                // Load and draw the world map
+                d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(function(worldData) {
+                    const countries = topojson.feature(worldData, worldData.objects.countries).features;
+
+                    // Draw countries
+                    svg.selectAll(".country")
+                        .data(countries)
+                        .enter().append("path")
+                        .attr("class", "country")
+                        .attr("d", path)
+                        .attr("fill", d => {
+                            const countryCode = d.id;
+                            const country = worldData.objects.countries.geometries.find(g => g.id === countryCode);
+                            const isoCode = country ? country.properties.iso_a3 : null;
+                            return isoCode && countryScores[isoCode] !== undefined ? 
+                                colorScale(countryScores[isoCode]) : "#ccc";
+                        })
+                        .style("stroke", "#fff")
+                        .style("stroke-width", 0.5)
+                        .style("opacity", 0.8)
+                        .style("transition", "fill 220ms ease, transform 180ms ease")
+                        .style("transform-origin", "50% 50%")
+                            .on("mouseover", function(event, d) {
+                                    const countryCode = d.id;
+                                    const country = worldData.objects.countries.geometries.find(g => g.id === countryCode);
+                                    const isoCode = country ? country.properties.iso_a3 : null;
+                                    const countryName = country ? country.properties.name : "Unknown";
+                                    const rawScore = isoCode ? countryScores[isoCode] : undefined;
+                                    const score = (typeof rawScore === 'number') ? rawScore : null;
+
+                                    // Deterministic integer placeholder [1..100] based on country code when real score missing
+                                    const placeholderInt = (() => {
+                                        if (!countryCode) return 50;
+                                        let h = 0; for (let i = 0; i < countryCode.length; i++) h = (h << 5) - h + countryCode.charCodeAt(i);
+                                        h = Math.abs(h);
+                                        return (h % 100) + 1; // 1..100
+                                    })();
+
+                                    // Decide which score to display while hovering (real score or placeholder)
+                                    const displayScore = (score !== null) ? score : placeholderInt;
+                                    const pct = Math.max(0, Math.min(100, Math.round(displayScore)));
+
+                                    // Always visually highlight the hovered country and set its fill based on displayScore
+                                    d3.select(this)
+                                        .style("opacity", 1)
+                                        .style("stroke-width", 2)
+                                        .style("cursor", "pointer")
+                                        .style("fill", colorScale(pct))
+                                        .style("transform", "scale(1.03)")
+                                        .raise();
+
+                                    if (score !== null) {
+                                        setSelectedCountry({ name: countryName, score: score, isoCode: isoCode });
+                                    } else {
+                                        setSelectedCountry(null);
+                                    }
+
+                                    // Deterministic placeholder decimal metric (0.00% - 99.99%) based on country code
+                                    const placeholderDecimal = (() => {
+                                        if (!countryCode) return null;
+                                        let h = 0; for (let i = 0; i < countryCode.length; i++) h = (h << 5) - h + countryCode.charCodeAt(i);
+                                        h = Math.abs(h);
+                                        const v = (h % 10000) / 10000; // 0..0.9999
+                                        return v.toFixed(4);
+                                    })();
+
+                                    const decimalLabel = placeholderDecimal !== null ? `${(parseFloat(placeholderDecimal) * 100).toFixed(2)}%` : '';
+
+                                    const isPlaceholder = (score === null);
+                                    const rawToShow = isPlaceholder ? placeholderInt : score;
+
+                                    const tooltipHtml = (`<div style="min-width:220px">
+                                            <div style="font-weight:700; margin-bottom:6px">${countryName}</div>
+                                            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px">
+                                                <div style="font-size:12px; color:#94a3b8">Economic Score</div>
+                                                <div style="font-size:16px; font-weight:800; color:${colorScale(pct)}">${pct}%</div>
+                                            </div>
+                                            <div style="margin-top:6px; font-size:13px; color:#e2e8f0">Value: <span style="font-weight:700; color:${colorScale(pct)}">${rawToShow}</span> ${isPlaceholder ? '<span style="color:#94a3b8; font-size:12px; margin-left:6px">(placeholder)</span>' : ''}</div>
+                                            <div style="height:8px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden; margin-top:8px">
+                                                <div style="width:${pct}%; height:100%; background:${colorScale(pct)}; transition:width 220ms ease"></div>
+                                            </div>
+                                            <div style="margin-top:8px; font-size:12px; color:#cbd5e1">Placeholder Metric: ${decimalLabel}</div>
+                                        </div>`);
+
+                                    tooltipDiv.html(tooltipHtml)
+                                        .style("left", (event.pageX + 12) + "px")
+                                        .style("top", (event.pageY - 34) + "px")
+                                        .style("opacity", 1)
+                                        .style("transform", "translateY(0px)");
+                                })
+                            .on("mouseout", function(event, d) {
+                                const countryCode = d.id;
+                                const country = worldData.objects.countries.geometries.find(g => g.id === countryCode);
+                                const isoCode = country ? country.properties.iso_a3 : null;
+                                const rawScore = isoCode ? countryScores[isoCode] : undefined;
+                                const originalScore = (typeof rawScore === 'number') ? rawScore : null;
+
+                                // Determine original fill to restore
+                                const originalFill = originalScore !== null ? colorScale(Math.max(0, Math.min(100, Math.round(originalScore)))) : "#ccc";
+
+                                d3.select(this)
+                                    .style("opacity", 0.8)
+                                    .style("stroke-width", 0.5)
+                                    .style("transform", "scale(1)")
+                                    .style("fill", originalFill);
+
+                                setSelectedCountry(null);
+
+                                // Hide tooltip
+                                tooltipDiv.style("opacity", 0);
+                            })
+                        .on("click", function(event, d) {
+                            const countryCode = d.id;
+                            const country = worldData.objects.countries.geometries.find(g => g.id === countryCode);
+                            const isoCode = country ? country.properties.iso_a3 : null;
+                            
+                            if (isoCode && countryScores[isoCode] !== undefined) {
+                                alert(`Country: ${country.properties.name}\nEconomic Score: ${countryScores[isoCode]}\n\nDetailed economic data would be shown here.`);
+                            }
+                        });
+
+                    // Add legend
+                    const legend = svg.append("g")
+                        .attr("class", "legend")
+                        .attr("transform", `translate(${width - 220}, ${height - 80})`);
+
+                    // Legend gradient
+                    const defs = svg.append("defs");
+                    const gradient = defs.append("linearGradient")
+                        .attr("id", "gradient")
+                        .attr("x1", "0%")
+                        .attr("y1", "0%")
+                        .attr("x2", "100%")
+                        .attr("y2", "0%");
+
+                    gradient.append("stop")
+                        .attr("offset", "0%")
+                        .attr("stop-color", "#fef3c7");
+
+                    gradient.append("stop")
+                        .attr("offset", "50%")
+                        .attr("stop-color", "#ff8a00");
+
+                    gradient.append("stop")
+                        .attr("offset", "100%")
+                        .attr("stop-color", "#ef4444");
+
+                    legend.append("rect")
+                        .attr("width", 200)
+                        .attr("height", 20)
+                        .style("fill", "url(#gradient)");
+
+                    // Legend labels
+                    // Legend labels reflecting percent scale (1 => low color, 50 mid, 100 high)
+                    legend.append("text")
+                        .attr("x", 0)
+                        .attr("y", 40)
+                        .text("1 (Low)")
+                        .style("font-size", "12px");
+
+                    legend.append("text")
+                        .attr("x", 100)
+                        .attr("y", 40)
+                        .text("50")
+                        .style("font-size", "12px")
+                        .style("text-anchor", "middle");
+
+                    legend.append("text")
+                        .attr("x", 200)
+                        .attr("y", 40)
+                        .text("100 (High)")
+                        .style("font-size", "12px")
+                        .style("text-anchor", "end");
+                });
+
+                // Clean up function
+                return () => {
+                    if (mapContainer.current) {
+                        mapContainer.current.innerHTML = "";
+                    }
+                    tooltipDiv.remove();
+                };
+            }, []);
+
+            return React.createElement(
+                'div',
+                { 
+                    className: 'world-map-container dark:bg-slate-800 rounded-lg shadow-md',
+                    ref: mapContainer
+                },
+                selectedCountry && React.createElement(
+                    'div',
+                    { className: 'absolute top-4 left-4 bg-white dark:bg-slate-700 p-3 rounded-lg shadow-md' },
+                    React.createElement(
+                        'h3',
+                        { className: 'font-bold text-lg' },
+                        selectedCountry.name
+                    ),
+                    React.createElement(
+                        'p',
+                        { className: 'mt-1' },
+                        `Economic Score: ${selectedCountry.score}`
+                    )
+                )
+            );
+        }
+
+        // Navigation Item Component
+        function NavItem({ item }) {
+            const [isOpen, setIsOpen] = React.useState(false);
+            
+            return React.createElement(
+                'div', 
+                { 
+                    className: 'relative group nav-item',
+                    onMouseEnter: () => setIsOpen(true),
+                    onMouseLeave: () => setIsOpen(false)
+                },
+                React.createElement(
+                    'a',
+                    { 
+                        href: item.href, 
+                        className: 'nav-link'
+                    },
+                    React.createElement('i', { className: `fa-solid ${item.icon} mr-2` }),
+                    item.name,
+                    item.dropdown && React.createElement('i', { className: 'fas fa-chevron-down ml-2 text-xs' })
+                ),
+                item.dropdown && React.createElement(
+                    'ul', 
+                    { 
+                        className: `dropdown ${isOpen ? 'open' : ''}` 
+                    },
+                    Array.isArray(item.dropdown[0]) || typeof item.dropdown[0] === 'string' ? (
+                        item.dropdown.map((dropdownItem, index) => 
+                            React.createElement(
+                                'li',
+                                { key: index, className: 'dropdown-item' },
+                                React.createElement(
+                                    'a',
+                                    { href: '#', className: 'dropdown-link' },
+                                    dropdownItem
+                                )
+                            )
+                        )
+                    ) : (
+                        item.dropdown.map((dropdownGroup, groupIndex) => 
+                            React.createElement(
+                                'li',
+                                { key: groupIndex, className: 'dropdown-item has-children' },
+                                React.createElement(
+                                    'a',
+                                    { href: '#', className: 'dropdown-link' },
+                                    dropdownGroup.name
+                                ),
+                                React.createElement(
+                                    'ul',
+                                    { className: 'dropdown second-level' },
+                                    dropdownGroup.items.map((subItem, subIndex) => 
+                                        React.createElement(
+                                            'li',
+                                            { key: subIndex, className: 'dropdown-item' },
+                                            React.createElement(
+                                                'a',
+                                                { href: '#', className: 'dropdown-link' },
+                                                subItem
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+
+        // Feature Card Component
+        function FeatureCard({ feature }) {
+            return React.createElement(
+                'div',
+                { className: 'feature-card bg-white dark:bg-slate-800 rounded-lg p-4 shadow-sm hover:shadow-md w-full' },
+                React.createElement(
+                    'div',
+                    { className: `w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3` },
+                    React.createElement(
+                        'i',
+                        { className: `fa-solid ${feature.icon} text-primary dark:text-blue-400 text-2xl` }
+                    )
+                ),
+                React.createElement('h3', { className: 'tex-base font-semibold mb-2' }, feature.title),
+                React.createElement('p', { className: 'text-sm text-gray-600 dark:text-slate-400 mb-4' }, feature.description),
+                React.createElement('a', { href: feature.href, className: 'text-primary font-medium flex items-center' },'Learn More',
+                React.createElement('i', { className: 'fa-solid fa-arrow-right ml-2 text-sm' })
+                )
+            );
+        }
+
+        //Feature Cards and Global Heatmap Layout//
+        const FeaturesAndMapLayout = React.createElement(
+            'div',
+            { className: 'flex flex-col lg:flex-row gap-6 px-6 py-10' },
+            // Feature Cards Column - 1/3 width on large screens
+            React.createElement(
+                'div',
+                { className: 'w-full lg:w-1/3 flex flex-col gap-6' },
+                features.map((feature, index) =>
+                    React.createElement(FeatureCard, { key: index, feature })
+                )
+            ),
+            // Global Heatmap Column - 2/3 width on large screens
+            React.createElement(
+                'div',
+                { className: 'w-full lg:w-2/3' },
+                React.createElement(WorldMap)
+            )
+        );
+
+        // Market Item Component
+        function MarketItem({ item }) {
+            return React.createElement(
+                'div',
+                { className: 'flex justify-between items-center pb-3 border-b border-gray-100 dark:border-slate-700' },
+                React.createElement(
+                    'div',
+                    { className: 'flex items-center' },
+                    React.createElement(
+                        'div',
+                        { className: `w-10 h-10 rounded-full bg-${item.color}-100 dark:bg-${item.color}-900/30 flex items-center justify-center mr-3` },
+                        React.createElement('i', { className: `fa-solid ${item.icon} text-${item.color}-500` })
+                    ),
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'p',
+                            { className: 'font-medium' },
+                            item.name
+                        ),
+                        React.createElement(
+                            'p',
+                            { className: 'text-sm text-gray-500 dark:text-slate-400' },
+                            item.symbol
+                        )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'text-right' },
+                    React.createElement(
+                        'p',
+                        { className: 'font-medium' },
+                        item.value
+                    ),
+                    React.createElement(
+                        'p',
+                        { className: `text-sm ${item.change.startsWith('+') ? 'text-green-500' : 'text-red-500'}` },
+                        item.change
+                    )
+                )
+            );
+        }
+
+        // Theme Toggle Component (Single Icon Version)
+        function ThemeToggle({ darkMode, toggleDarkMode }) {
+            return React.createElement(
+                'button',
+                {
+                    onClick: toggleDarkMode,
+                    className: 'theme-toggle-btn',
+                    'aria-label': 'Toggle dark mode'
+                },
+                darkMode ? 
+                    React.createElement('i', { 
+                        className: 'fa-solid fa-sun text-yellow-400' 
+                    }) :
+                    React.createElement('i', { 
+                        className: 'fa-solid fa-moon text-blue-400' 
+                    })
+            );
+        }
+
+        // Main App Component
+        function App() {
+            const [darkMode, setDarkMode] = React.useState(false);
+            const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+            const [authModalOpen, setAuthModalOpen] = React.useState(false);
+            const [activeAuthTab, setActiveAuthTab] = React.useState('login');
+            const [isLoggedIn, setIsLoggedIn] = React.useState(!!localStorage.getItem('qufin_token'));
+            const authModalRef = React.useRef(null);
+            const authContainerRef = React.useRef(null);
+
+            // Add event handlers
+            React.useEffect(() => {
+                const savedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                    setDarkMode(true);
+                    document.documentElement.classList.add('dark');
+                }
+
+                // Add submit handlers to signup/login forms
+                const setupFormHandlers = async () => {
+                    const signupForm = document.querySelector('form.js-signup');
+                    const loginForm = document.querySelector('form.js-login');
+                    const { signup, login } = await import('./scripts/backend-integration.js');
+
+                    if (signupForm) {
+                        signupForm.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            console.log('Signup form submitted');
+                            
+                            const email = document.getElementById('signup-email').value;
+                            const password = document.getElementById('signup-password').value;
+                            const confirmPassword = document.getElementById('signup-confirm').value;
+                            
+                            if (!email || !password || !confirmPassword) {
+                                alert('Please fill in all fields');
+                                return;
+                            }
+                            
+                            if (password !== confirmPassword) {
+                                alert('Passwords do not match');
+                                return;
+                            }
+                            
+                            const res = await signup(email, password);
+                            console.log('Signup response:', res);
+                            
+                            if (res.id) {
+                                alert('Successfully signed up! Please log in.');
+                                setActiveAuthTab('login');
+                                e.target.reset();
+                            } else if (res.detail) {
+                                alert('Error: ' + res.detail);
+                            } else {
+                                alert('Unexpected response');
+                            }
+                        });
+                    }
+
+                    if (loginForm) {
+                        loginForm.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            console.log('Login form submitted');
+                            
+                            const email = document.getElementById('login-email').value;
+                            const password = document.getElementById('login-password').value;
+                            
+                            const res = await login(email, password);
+                            console.log('Login response:', res);
+                            
+                            if (res.access_token) {
+                                localStorage.setItem('qufin_token', res.access_token);
+                                setIsLoggedIn(true);
+                                alert('Logged in');
+                                setAuthModalOpen(false);
+                            } else if (res.detail) {
+                                alert('Error: ' + res.detail);
+                            } else {
+                                alert('Unexpected response');
+                            }
+                        });
+                    }
+                };
+
+                setupFormHandlers();
+            }, []);
+
+            // Handle ESC key to close modal
+            React.useEffect(() => {
+                const handleEscKey = (e) => {
+                    if (e.keyCode === 27 && authModalOpen) {
+                        setAuthModalOpen(false);
+                    }
+                };
+
+                const handleClickOutside = (e) => {
+                    if (authModalOpen && 
+                        authContainerRef.current && 
+                        !authContainerRef.current.contains(e.target)) {
+                        setAuthModalOpen(false);
+                    }
+                };
+
+                document.addEventListener('keydown', handleEscKey);
+                document.addEventListener('mousedown', handleClickOutside);
+
+                return () => {
+                    document.removeEventListener('keydown', handleEscKey);
+                    document.removeEventListener('mousedown', handleClickOutside);
+                };
+            }, [authModalOpen]);
+
+            // Toggle dark mode
+            const toggleDarkMode = () => {
+                setDarkMode(!darkMode);
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', darkMode ? 'light' : 'dark');
+            };
+
+            // Toggle mobile menu
+            const toggleMobileMenu = () => {
+                setMobileMenuOpen(!mobileMenuOpen);
+            };
+
+            // Toggle auth modal
+            const toggleAuthModal = () => {
+                setAuthModalOpen(!authModalOpen);
+            };
+
+            // Close auth modal
+            const closeAuthModal = () => {
+                setAuthModalOpen(false);
+            };
+
+            // Switch auth tabs
+            const switchAuthTab = (tab) => {
+                setActiveAuthTab(tab);
+            };
+
+            // Handle login/signup via backend-integration.js
+            React.useEffect(() => {
+                // Signup
+                document.querySelectorAll('form.js-signup').forEach(form => {
+                    form.onsubmit = async (e) => {
+                        e.preventDefault();
+                        const email = form.querySelector('input[type="email"]')?.value || document.getElementById('signup-email')?.value;
+                        const password = form.querySelector('input[type="password"]')?.value || document.getElementById('signup-password')?.value;
+                        const { signup } = await import('./scripts/backend-integration.js');
+                        const res = await signup(email, password);
+                        if (res.id) {
+                            alert('Successfully signed up! Please log in.');
+                            setActiveAuthTab('login');
+                            form.reset();
+                        } else if (res.detail) {
+                            alert('Error: ' + res.detail);
+                        } else {
+                            alert('Unexpected response');
+                        }
+                    };
+                });
+                // Login
+                document.querySelectorAll('form.js-login').forEach(form => {
+                    form.onsubmit = async (e) => {
+                        e.preventDefault();
+                        const email = form.querySelector('input[type="email"]')?.value || document.getElementById('login-email')?.value;
+                        const password = form.querySelector('input[type="password"]')?.value || document.getElementById('login-password')?.value;
+                        const { login } = await import('./scripts/backend-integration.js');
+                        const res = await login(email, password);
+                        if (res.access_token) {
+                            localStorage.setItem('qufin_token', res.access_token);
+                            setIsLoggedIn(true);
+                            alert('Logged in');
+                            setAuthModalOpen(false);
+                        } else if (res.detail) {
+                            alert('Error: ' + res.detail);
+                        } else {
+                            alert('Unexpected response');
+                        }
+                    };
+                });
+            }, [authModalOpen, activeAuthTab]);
+
+            // Logout handler
+            const handleLogout = () => {
+                localStorage.removeItem('qufin_token');
+                setIsLoggedIn(false);
+                alert('Logged out');
+            };
+
+            // Remove demo handleSubmit; backend-integration.js will handle form submission
+
+            return React.createElement(
+                'div',
+                { className: `min-h-screen ${darkMode ? 'dark' : ''}` },
+                // Header
+                React.createElement(
+                    'header',
+                    { className: 'sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-md' },
+                    React.createElement(
+                        'div',
+                        { className: 'container mx-auto px-4 py-3 flex justify-between items-center' },
+                        React.createElement(
+                            'div',
+                            { className: 'flex items-center' },
+                            React.createElement(
+                            'div',
+                            { className: `logo-container p-1 rounded-lg ${darkMode ? 'bg-transparent' : 'bg-gray-800'}`},
+                            React.createElement('img', {
+                                src: 'assets/logos/qufin-logo.png', // Logo path
+                                alt: 'QuFin Logo',
+                                className: 'logo-img',
+                                style: { height: '1.5625rem' } // Adjust height as needed
+                            })
+                        )
+                        ),
+                        React.createElement(
+                            'nav',
+                            { className: 'hidden md:flex space-x-1' },
+                            navigationData.map((item, index) => React.createElement(NavItem, { key: index, item: item }))
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'flex items-center space-x-4' },
+                            // Theme Toggle (Two Icons Version)
+                            React.createElement(ThemeToggle, {
+                                darkMode: darkMode,
+                                toggleDarkMode: toggleDarkMode
+                            }),
+                            !isLoggedIn && React.createElement(
+                                'button',
+                                {
+                                    onClick: toggleAuthModal,
+                                    className: 'px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 flex items-center login-btn'
+                                },
+                                React.createElement('i', { className: 'fa-solid fa-user mr-2' }),
+                                'Login'
+                            ),
+                            isLoggedIn && React.createElement(
+                                'button',
+                                {
+                                    onClick: handleLogout,
+                                    className: 'px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center logout-btn'
+                                },
+                                React.createElement('i', { className: 'fa-solid fa-sign-out-alt mr-2' }),
+                                'Logout'
+                            ),
+                            React.createElement(
+                                'button',
+                                {
+                                    onClick: toggleMobileMenu,
+                                    className: 'md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700'
+                                },
+                                React.createElement('i', { className: 'fa-solid fa-bars' })
+                            )
+                        )
+                    ),
+                    // Mobile Menu
+                    React.createElement(
+                        'div',
+                        { className: `mobile-menu md:hidden ${mobileMenuOpen ? 'open' : ''}` },
+                        React.createElement(
+                            'div',
+                            { className: 'flex flex-col space-y-3' },
+                            navigationData.map((item, index) => 
+                                React.createElement(
+                                    'a',
+                                    {
+                                        key: index,
+                                        href: item.href,
+                                        className: 'py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 flex items-center'
+                                    },
+                                    React.createElement('i', { className: `fa-solid ${item.icon} mr-3` }),
+                                    item.name
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'pt-4 border-t border-gray-200 dark:border-slate-700' },
+                                !isLoggedIn && React.createElement(
+                                    'button',
+                                    {
+                                        onClick: toggleAuthModal,
+                                        className: 'w-full py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 flex items-center justify-center login-btn'
+                                    },
+                                    React.createElement('i', { className: 'fa-solid fa-user mr-2' }),
+                                    'Login'
+                                ),
+                                isLoggedIn && React.createElement(
+                                    'button',
+                                    {
+                                        onClick: handleLogout,
+                                        className: 'w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 flex items-center justify-center logout-btn'
+                                    },
+                                    React.createElement('i', { className: 'fa-solid fa-sign-out-alt mr-2' }),
+                                    'Logout'
+                                )
+                            )
+                        )
+                    )
+                ),
+                // Auth Modal
+                React.createElement(
+                    'div',
+                    { 
+                        className: `auth-modal ${authModalOpen ? 'open' : ''}`,
+                        ref: authModalRef
+                    },
+                    React.createElement(
+                        'div',
+                        { 
+                            className: 'auth-container',
+                            ref: authContainerRef
+                        },
+                        React.createElement(
+                            'button',
+                            {
+                                onClick: closeAuthModal,
+                                className: 'auth-close'
+                            },
+                            React.createElement('i', { className: 'fa-solid fa-times' })
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'auth-tabs' },
+                            React.createElement(
+                                'div',
+                                {
+                                    className: `auth-tab ${activeAuthTab === 'login' ? 'active' : ''}`,
+                                    onClick: () => switchAuthTab('login')
+                                },
+                                'Login'
+                            ),
+                            React.createElement(
+                                'div',
+                                {
+                                    className: `auth-tab ${activeAuthTab === 'signup' ? 'active' : ''}`,
+                                    onClick: () => switchAuthTab('signup')
+                                },
+                                'Sign Up'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'auth-forms' },
+                            activeAuthTab === 'login' && React.createElement(
+                                'form',
+                                { className: 'auth-form active js-login' },
+                                React.createElement(
+                                    'div',
+                                    { className: 'form-group' },
+                                    React.createElement('label', { htmlFor: 'login-email' }, 'Email'),
+                                    React.createElement('input', { type: 'email', id: 'login-email', placeholder: 'Enter your email' })
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'form-group' },
+                                    React.createElement('label', { htmlFor: 'login-password' }, 'Password'),
+                                    React.createElement('input', { type: 'password', id: 'login-password', placeholder: 'Enter your password' })
+                                ),
+                                React.createElement('button', { 
+                                    type: 'submit', 
+                                    className: 'auth-submit',
+                                    onClick: (e) => {
+                                        console.log('Login button clicked');
+                                    }
+                                }, 'Login'),
+                                React.createElement(
+                                    'div',
+                                    { className: 'mt-4 text-center' },
+                                    React.createElement(
+                                        'a',
+                                        { href: '#', className: 'text-primary-500 hover:underline' },
+                                        'Forgot password?'
+                                    )
+                                )
+                            ),
+                            activeAuthTab === 'signup' && React.createElement(
+                                'form',
+                                { className: 'auth-form active js-signup' },
+                                React.createElement(
+                                    'div',
+                                    { className: 'form-group' },
+                                    React.createElement('label', { htmlFor: 'signup-name' }, 'Full Name'),
+                                    React.createElement('input', { type: 'text', id: 'signup-name', placeholder: 'Enter your full name' })
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'form-group' },
+                                    React.createElement('label', { htmlFor: 'signup-email' }, 'Email'),
+                                    React.createElement('input', { 
+                                        type: 'email', 
+                                        id: 'signup-email',
+                                        name: 'email',
+                                        placeholder: 'Enter your email',
+                                        required: true 
+                                    })
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'form-group' },
+                                    React.createElement('label', { htmlFor: 'signup-password' }, 'Password'),
+                                    React.createElement('input', { 
+                                        type: 'password', 
+                                        id: 'signup-password',
+                                        name: 'password',
+                                        placeholder: 'Create a password',
+                                        required: true 
+                                    })
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'form-group' },
+                                    React.createElement('label', { htmlFor: 'signup-confirm' }, 'Confirm Password'),
+                                    React.createElement('input', { 
+                                        type: 'password', 
+                                        id: 'signup-confirm',
+                                        name: 'confirm-password',
+                                        placeholder: 'Confirm your password',
+                                        required: true 
+                                    })
+                                ),
+                                React.createElement('button', { 
+                                    type: 'submit', 
+                                    className: 'auth-submit',
+                                    onClick: (e) => {
+                                        // Let the form's submit handler handle it
+                                        console.log('Signup button clicked');
+                                    }
+                                }, 'Sign Up')
+                            )
+                        )
+                    )
+                ),
+                // Hero Section
+                React.createElement(
+                    'section',
+                    { className: 'hero-gradient text-white py-8 md:py-12' },
+                    React.createElement(
+                        'div',
+                        { className: 'container mx-auto px-4' },
+                        React.createElement(
+                            'div',
+                            { className: 'max-w-6xl mx-auto text-center' },
+                            React.createElement(
+                                'h1',
+                                { className: 'text-4xl md:text-5xl font-bold mb-6' },
+                                'Revolutionize Your Trading with AI Intelligence'
+                            ),
+                            React.createElement(
+                                'p',
+                                { className: 'text-xl mb-10 opacity-90' },
+                                'Discover cutting-edge AI-powered tools for market analysis, strategies, and insights. Unlock opportunities with quantum-inspired algorithms and alternative data signals.'
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'flex flex-col sm:flex-row justify-center gap-4' },
+                                React.createElement(
+                                    'a',
+                                    { href: 'pages/product.html', className: 'px-8 py-3 bg-white text-primary-500 font-semibold rounded-lg hover:bg-gray-100 transition' },
+                                    'Explore Platform'
+                                ),
+                                React.createElement(
+                                    'a',
+                                    { href: 'pages/pricing.html', className: 'px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition' },
+                                    'View Pricing'
+                                )
+                            )
+                        )
+                    )
+                ),
+                // Features and Global Heatmap Section
+                React.createElement(
+                    'section',
+                    { className: 'py-16 bg-gray-50 dark:bg-slate-900' },
+                    React.createElement(
+                        'div',
+                        { className: 'container mx-auto px-4' },
+                        React.createElement(
+                            'div',
+                            { className: 'text-center max-w-2xl mx-auto mb-16' },
+                            React.createElement(
+                                'h2',
+                                { className: 'text-3xl font-bold mb-4' },
+                                'Global Economic Intelligence'
+                            ),
+                            React.createElement(
+                                'p',
+                                { className: 'text-gray-600 dark:text-slate-400' },
+                                'Monitor country economic performance with our interactive heatmap and access powerful AI tools for investment decisions.'
+                            )
+                        ),
+                        FeaturesAndMapLayout
+                    )
+                ),
+                // Dashboard Preview
+                React.createElement(
+                    'section',
+                    { className: 'py-16' },
+                    React.createElement(
+                        'div',
+                        { className: 'container mx-auto px-4' },
+                        React.createElement(
+                            'div',
+                            { className: 'text-center max-w-2xl mx-auto mb-16' },
+                            React.createElement(
+                                'h2',
+                                { className: 'text-3xl font-bold mb-4' },
+                                'Intuitive Dashboard'
+                            ),
+                            React.createElement(
+                                'p',
+                                { className: 'text-gray-600 dark:text-slate-400' },
+                                'Monitor your investments and market trends with our clean, customizable dashboard.'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'grid grid-cols-1 lg:grid-cols-3 gap-6' },
+                            React.createElement(
+                                'div',
+                                { className: 'dashboard-card lg:col-span-2' },
+                                React.createElement(
+                                    'div',
+                                    { className: 'flex justify-between items-center mb-6' },
+                                    React.createElement(
+                                        'h3',
+                                        { className: 'text-xl font-bold' },
+                                        'Portfolio Performance'
+                                    ),
+                                    React.createElement(TimeSelector, null)
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'chart-container' },
+                                    React.createElement(
+                                        'div',
+                                        { className: 'text-center' },
+                                        React.createElement('i', { className: 'fa-solid fa-chart-line text-4xl text-gray-400 mb-3' }),
+                                        React.createElement(
+                                            'p',
+                                            { className: 'text-gray-500 dark:text-slate-400' },
+                                            'Performance chart visualization'
+                                        )
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'dashboard-card' },
+                                React.createElement(
+                                    'h3',
+                                    { className: 'text-xl font-bold mb-6' },
+                                    'Market Overview'
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'space-y-4' },
+                                    marketData.map((item, index) => React.createElement(MarketItem, { key: index, item: item }))
+                                )
+                            )
+                        )
+                    )
+                ),
+                // Footer
+                React.createElement(
+                    'footer',
+                    { className: 'bg-slate-800 text-slate-300 pt-8 pb-4' },
+                    React.createElement(
+                        'div',
+                        { className: 'container mx-auto px-2' },
+                        React.createElement(
+                            'div',
+                            { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 mb-4' },
+                            React.createElement(
+                                'div',
+                                { className: 'lg:col-span-2' },
+                                React.createElement(
+                                    'div',
+                                    { className: 'flex items-center mb-2' },
+                                    React.createElement('img', {
+                                        src: 'assets/logos/qufin-logo.png', // QuFin Logo Path same path as above
+                                        alt: 'QuFin Logo',
+                                        className: 'logo-img',
+                                        style: { height: '1.5625rem' } // Adjust height as needed
+                                    })
+                                ),
+                                React.createElement(
+                                    'p',
+                                    { className: 'mb-6 max-w-md' },
+                                    'AI-powered trading intelligence platform providing cutting-edge analytics and alternative data signals for modern investors.'
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { className: 'flex space-x-4' },
+                                    React.createElement(
+                                        'a',
+                                        {
+                                            href: '#',
+                                            className: 'w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-primary-500 transition'
+                                        },
+                                        React.createElement('i', { className: 'fab fa-twitter text-white' })
+                                    ),
+                                    React.createElement(
+                                        'a',
+                                        {
+                                            href: '#',
+                                            className: 'w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-primary-500 transition'
+                                        },
+                                        React.createElement('i', { className: 'fab fa-linkedin-in text-white' })
+                                    ),
+                                    React.createElement(
+                                        'a',
+                                        {
+                                            href: '#',
+                                            className: 'w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-primary-500 transition'
+                                        },
+                                        React.createElement('i', { className: 'fab fa-facebook-f text-white' })
+                                    ),
+                                    React.createElement(
+                                        'a',
+                                        {
+                                            href: '#',
+                                            className: 'w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-primary-500 transition'
+                                        },
+                                        React.createElement('i', { className: 'fab fa-github text-white' })
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                null,
+                                React.createElement(
+                                    'h3',
+                                    { className: 'text-white text-lg font-semibold mb-4' },
+                                    'Products'
+                                ),
+                                React.createElement(
+                                    'ul',
+                                    { className: 'space-y-3' },
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/product.html', className: 'hover:text-white transition' },
+                                            'AI Score Grid'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/product.html', className: 'hover:text-white transition' },
+                                            'Market Data'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/aistrategies.html', className: 'hover:text-white transition' },
+                                            'Trading Strategies'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/product.html', className: 'hover:text-white transition' },
+                                            'Backtesting'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/product.html', className: 'hover:text-white transition' },
+                                            'Risk Management'
+                                        )
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                null,
+                                React.createElement(
+                                    'h3',
+                                    { className: 'text-white text-lg font-semibold mb-4' },
+                                    'Resources'
+                                ),
+                                React.createElement(
+                                    'ul',
+                                    { className: 'space-y-3' },
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/resources.html', className: 'hover:text-white transition' },
+                                            'Learning Academy'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: 'pages/reports.html', className: 'hover:text-white transition' },
+                                            'Market Reports'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'Blog'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'Webinars'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'API Documentation'
+                                        )
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                null,
+                                React.createElement(
+                                    'h3',
+                                    { className: 'text-white text-lg font-semibold mb-4' },
+                                    'Company'
+                                ),
+                                React.createElement(
+                                    'ul',
+                                    { className: 'space-y-3' },
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'About Us'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'Careers'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'Contact'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'Privacy Policy'
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'li',
+                                        null,
+                                        React.createElement(
+                                            'a',
+                                            { href: '#', className: 'hover:text-white transition' },
+                                            'Terms of Service'
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'pt-4 border-t border-slate-600 text-center text-sm' },
+                            React.createElement(
+                                'p',
+                                null,
+                                '© 2023 QuFin. All rights reserved.'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+    </script>
+    <script type="module">
+        // Debug logging
+        console.log('Page loaded');
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            const loginForm = document.querySelector('form.js-login');
+            const signupForm = document.querySelector('form.js-signup');
+            console.log('Login form:', loginForm);
+            console.log('Signup form:', signupForm);
+        });
+    </script>
+</body>
+</html>

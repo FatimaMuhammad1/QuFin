@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuFin - Resources</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: { 50: '#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' }, secondary: {50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4',300:'#5eead4',400:'#2dd4bf',500:'#14b8a6',600:'#0d9488',700:'#0f766e',800:'#115e59',900:'#134e4a'} }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100">
+    <!-- Original header preserved -->
+    <!-- <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="../logo.png" alt="QuFin Logo" class="logo-img">
+                <a href="../index.html" class="logo"></a>
+            </div>
+            <nav id="navMenu" class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="product.html" class="nav-link"><i class="fas fa-box"></i>Product</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Score Grid</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Forex</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Energies</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Metals</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Futures</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Commodities</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pricing.html" class="nav-link"><i class="fas fa-dollar-sign"></i>Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aiscoregrid.html" class="nav-link"><i class="fas fa-chart-line"></i>AI Score Grid</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Forex Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Equity Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Commodity Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Crypto Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Country Scores</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aistrategies.html" class="nav-link"><i class="fas fa-cogs"></i>AI Strategies</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Long/Short Equity</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Market Neutral</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Global Macro</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Arbitrage</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Quantitative</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="globaldata.html" class="nav-link"><i class="fas fa-globe"></i>Global Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="resources.html" class="nav-link"><i class="fas fa-book"></i>Resources</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Market Simulator</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Explainability</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Macro Data Decoder</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Economic Calendar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link"><i class="fas fa-file-alt"></i>Reports</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="auth-section">
+                <!-- Login button removed -->
+            </div>
+            <button id="mobileToggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Canonical header from home.html -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo-container p-1 rounded-lg">
+                    <!-- Logo with visible background for clarity -->
+                    <img src="../assets/logos/qufin-logo.png" alt="QuFin Logo" class="logo-img" style="height:1.5625rem; background:#222; border-radius:8px; padding:4px;">
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-1">
+                <a href="home.html" class="nav-link"><i class="fa-solid fa-home mr-2"></i>Home</a>
+                <a href="product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Product</a>
+                <a href="pricing.html" class="nav-link"><i class="fa-solid fa-dollar-sign mr-2"></i>Pricing</a>
+                <a href="aiscoregrid.html" class="nav-link"><i class="fa-solid fa-chart-line mr-2"></i>AI Score Grid</a>
+                <a href="aistrategies.html" class="nav-link"><i class="fa-solid fa-cogs mr-2"></i>AI Strategies</a>
+                <a href="globaldata.html" class="nav-link"><i class="fa-solid fa-globe mr-2"></i>Global Data</a>
+                <a href="resources.html" class="nav-link"><i class="fa-solid fa-book mr-2"></i>Resources</a>
+                <a href="reports.html" class="nav-link"><i class="fa-solid fa-file-alt mr-2"></i>Reports</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="md:hidden p-2 rounded-lg"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+            </header>
+
+    <div id="authModal" class="auth-modal">
+        <div class="auth-container">
+            <button class="auth-close"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <div class="auth-tab active">Login</div>
+                <div class="auth-tab">Sign Up</div>
+            </div>
+            <div class="auth-forms">
+                <div class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password">
+                    </div>
+                    <button class="auth-submit">Login</button>
+                </div>
+                <div class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Enter your password">
+                    </div>
+                    <button class="auth-submit">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="bg-gray-50 dark:bg-slate-900">
+        <!-- Hero Section -->
+                <!-- Hero Section -->
+        <section class="hero-gradient text-white py-8 md:py-12">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                        Trading Resources & Learning
+                    </h1>
+                    <p class="text-xl mb-6 opacity-90">
+                        Unlock your trading potential with our comprehensive suite of educational resources,
+                        market simulators, and advanced analytical tools.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#courses" class="px-6 py-3 bg-white text-primary-500 font-semibold rounded-lg hover:bg-gray-100 transition">
+                            Browse Resources
+                        </a>
+                        <a href="#simulator" class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition">
+                            Try Market Simulator
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Resources Grid -->
+        <div class="py-16 sm:py-24">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Educational Resources</h2>
+                    <p class="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-400">Curated tools and content to enhance your trading knowledge and skills</p>
+                </div>
+                <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <!-- AI Trading Academy -->
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl bg-white dark:bg-slate-800">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-900 dark:to-primary-800">
+                            <div class="rounded-full bg-primary-500/10 p-3 dark:bg-primary-400/10">
+                                <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                            </div>
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-white/10 rounded-full">Free</span>
+                        </div>
+                        <div class="flex-1 px-6 pt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">AI Trading Academy</h3>
+                            <p class="mt-4 text-base text-gray-600 dark:text-gray-400">Stop Losing, Start Learning—unlock your trading potential with expert-led AI courses, free and premium.</p>
+                        </div>
+                        <div class="mt-6 p-6">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">
+                                Explore Courses
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quantum Market Simulator -->
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl bg-white dark:bg-slate-800">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-900 dark:to-primary-800">
+                            <div class="rounded-full bg-primary-500/10 p-3 dark:bg-primary-400/10">
+                                <i class="fas fa-bolt text-2xl text-white"></i>
+                            </div>
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-white/10 rounded-full">Free</span>
+                        </div>
+                        <div class="flex-1 px-6 pt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Quantum Market Simulator</h3>
+                            <p class="mt-4 text-base text-gray-600 dark:text-gray-400">Interactive sandbox to test strategies in different quantum-influenced market environments with realistic simulations.</p>
+                        </div>
+                        <div class="mt-6 p-6">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">
+                                Try Simulator
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- AI Signal Explainability Hub -->
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl bg-white dark:bg-slate-800">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-900 dark:to-primary-800">
+                            <div class="rounded-full bg-primary-500/10 p-3 dark:bg-primary-400/10">
+                                <i class="fas fa-search text-2xl text-white"></i>
+                            </div>
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-white/10 rounded-full">Free</span>
+                        </div>
+                        <div class="flex-1 px-6 pt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">AI Signal Explainability Hub</h3>
+                            <p class="mt-4 text-base text-gray-600 dark:text-gray-400">Where our AI explains its reasoning behind specific signals in plain language with visualizations.</p>
+                        </div>
+                        <div class="mt-6 p-6">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">
+                                Explore Signals
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Macro Data DNA Decoder -->
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl bg-white dark:bg-slate-800">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-900 dark:to-primary-800">
+                            <div class="rounded-full bg-primary-500/10 p-3 dark:bg-primary-400/10">
+                                <i class="fas fa-network-wired text-2xl text-white"></i>
+                            </div>
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-white/10 rounded-full">Premium</span>
+                        </div>
+                        <div class="flex-1 px-6 pt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Macro Data DNA Decoder</h3>
+                            <p class="mt-4 text-base text-gray-600 dark:text-gray-400">Tool that reveals hidden connections between seemingly unrelated macroeconomic indicators with network graphs.</p>
+                        </div>
+                        <div class="mt-6 p-6">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">
+                                Learn More
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Regime Shift Early-Warning System -->
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl bg-white dark:bg-slate-800">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-900 dark:to-primary-800">
+                            <div class="rounded-full bg-primary-500/10 p-3 dark:bg-primary-400/10">
+                                <i class="fas fa-bell text-2xl text-white"></i>
+                            </div>
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-white/10 rounded-full">Premium</span>
+                        </div>
+                        <div class="flex-1 px-6 pt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Regime Shift Early-Warning System</h3>
+                            <p class="mt-4 text-base text-gray-600 dark:text-gray-400">Free alerts when market regimes are about to change with probability estimates (limited functionality).</p>
+                        </div>
+                        <div class="mt-6 p-6">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">
+                                Learn More
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Global Economic Calendar -->
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg transition-all hover:shadow-xl bg-white dark:bg-slate-800">
+                        <div class="flex items-center justify-between p-6 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-900 dark:to-primary-800">
+                            <div class="rounded-full bg-primary-500/10 p-3 dark:bg-primary-400/10">
+                                <i class="fas fa-calendar-alt text-2xl text-white"></i>
+                            </div>
+                            <span class="px-3 py-1 text-sm font-medium text-white bg-white/10 rounded-full">Free</span>
+                        </div>
+                        <div class="flex-1 px-6 pt-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Global Economic Calendar</h3>
+                            <p class="mt-4 text-base text-gray-600 dark:text-gray-400">Economic events that move markets—live and direct with impact assessments and historical context.</p>
+                        </div>
+                        <div class="mt-6 p-6">
+                            <a href="#" class="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">
+                                View Calendar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="relative isolate overflow-hidden bg-gradient-to-b from-primary-600/20 to-primary-600/5 dark:from-primary-900/20 dark:to-primary-900/5">
+            <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        Ready to enhance your trading skills?
+                    </h2>
+                    <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-400">
+                        Start your journey with our AI Trading Academy or test your strategies in our Quantum Market Simulator.
+                    </p>
+                    <div class="mt-10 flex items-center justify-center gap-x-6">
+                        <a href="#academy" class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600">
+                            Start Learning
+                        </a>
+                        <a href="#simulator" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
+                            Try Simulator <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
+                <div class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary-600 to-primary-400 opacity-30 dark:from-primary-900 dark:to-primary-700"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Original footer preserved -->
+    <!-- <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>QuFin</h3>
+                <p>AI-powered trading intelligence platform providing cutting-edge analytics and alternative data signals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">AI Score Grid</a></li>
+                    <li><a href="#">Market Data</a></li>
+                    <li><a href="#">Trading Strategies</a></li>
+                    <li><a href="#">Backtesting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Learning Academy</a></li>
+                    <li><a href="#">Market Reports</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2023 QuFin. All rights reserved.
+        </div>
+    </footer> -->
+
+    <!-- Canonical footer from home.html -->
+    <footer class="bg-slate-900 text-white">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About QuFin</h3>
+                    <p class="text-slate-400">QuFin is a cutting-edge AI-powered investment platform that provides innovative tools and strategies for institutional investors.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-slate-400 hover:text-white">Home</a></li>
+                        <li><a href="product.html" class="text-slate-400 hover:text-white">Product</a></li>
+                        <li><a href="pricing.html" class="text-slate-400 hover:text-white">Pricing</a></li>
+                        <li><a href="resources.html" class="text-slate-400 hover:text-white">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <div class="space-y-2 text-slate-400">
+                        <p>Email: info@qufin.com</p>
+                        <p>Phone: +1 (123) 456-7890</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="hover:text-white"><img src="../assets/images/x-logo-twitter-icon.png" alt="Twitter" class="h-6 w-6"></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-linkedin text-2xl"></i></a>
+                            <a href="#" class="hover:text-white"><img src="../assets/images/whatsapp30x30.png" alt="WhatsApp" class="h-6 w-6"></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-800 text-center">
+                <p class="text-slate-400">&copy; 2023 QuFin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

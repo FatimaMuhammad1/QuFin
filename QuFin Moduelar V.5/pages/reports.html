@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuFin - Reports</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100">
+    <!-- Original header preserved -->
+    <!-- <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="../logo.png" alt="QuFin Logo" class="logo-img">
+                <a href="../index.html" class="logo">Qu<span class="logo-accent">Fin</span></a>
+            </div>
+            <nav id="navMenu" class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="product.html" class="nav-link"><i class="fas fa-box"></i>Product</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Score Grid</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Forex</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Energies</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Metals</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Futures</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Commodities</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pricing.html" class="nav-link"><i class="fas fa-dollar-sign"></i>Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aiscoregrid.html" class="nav-link"><i class="fas fa-chart-line"></i>AI Score Grid</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Forex Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Equity Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Commodity Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Crypto Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Country Scores</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aistrategies.html" class="nav-link"><i class="fas fa-cogs"></i>AI Strategies</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Long/Short Equity</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Market Neutral</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Global Macro</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Arbitrage</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Quantitative</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="globaldata.html" class="nav-link"><i class="fas fa-globe"></i>Global Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="resources.html" class="nav-link"><i class="fas fa-book"></i>Resources</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Backtesting</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Explainability</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Global Heatmap</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Global Sentiment</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">CoT Crystalizer (AI)</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Trading Academy</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Traders' Community</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Economic Calendar</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Reports</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Black Swan Grounds</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Black Pools Decoder</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Market Meme Stock</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="auth-section">
+                <button id="authToggle" class="auth-toggle"><i class="fas fa-user"></i>Login</button>
+            </div>
+            <button id="mobileToggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header> -->
+
+    <!-- Canonical header from home.html -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo-container p-1 rounded-lg">
+                    <!-- Logo with visible background for clarity -->
+                    <img src="../assets/logos/qufin-logo.png" alt="QuFin Logo" class="logo-img" style="height:1.5625rem; background:#222; border-radius:8px; padding:4px;">
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-1">
+                <a href="home.html" class="nav-link"><i class="fa-solid fa-home mr-2"></i>Home</a>
+                <a href="product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Product</a>
+                <a href="pricing.html" class="nav-link"><i class="fa-solid fa-dollar-sign mr-2"></i>Pricing</a>
+                <a href="aiscoregrid.html" class="nav-link"><i class="fa-solid fa-chart-line mr-2"></i>AI Score Grid</a>
+                <a href="aistrategies.html" class="nav-link"><i class="fa-solid fa-cogs mr-2"></i>AI Strategies</a>
+                <a href="globaldata.html" class="nav-link"><i class="fa-solid fa-globe mr-2"></i>Global Data</a>
+                <a href="resources.html" class="nav-link"><i class="fa-solid fa-book mr-2"></i>Resources</a>
+                <a href="reports.html" class="nav-link"><i class="fa-solid fa-file-alt mr-2"></i>Reports</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="md:hidden p-2 rounded-lg"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="authModal" class="auth-modal">
+        <div class="auth-container">
+            <button class="auth-close"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <div class="auth-tab active">Login</div>
+                <div class="auth-tab">Sign Up</div>
+            </div>
+            <div class="auth-forms">
+                <div class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password">
+                    </div>
+                    <button class="auth-submit">Login</button>
+                </div>
+                <div class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Enter your password">
+                    </div>
+                    <button class="auth-submit">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Market Intelligence Reports</h1>
+                    <p class="text-xl opacity-90 mb-8">Exclusive insights and in-depth analysis from our team of expert analysts and AI-powered research tools.</p>
+                    <div class="flex justify-center gap-4">
+                        <button class="bg-white text-primary-500 px-6 py-3 rounded-lg hover:bg-gray-100 transition">
+                            Latest Reports
+                        </button>
+                        <button class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition">
+                            Subscribe Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Reports Section -->
+        <section class="py-16 bg-gray-50 dark:bg-slate-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Featured Reports</h2>
+                    <p class="text-slate-600 dark:text-slate-300 mt-4">Latest insights and analysis from our research team</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <!-- Report 1: Quantum Computing -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-primary-500 text-white text-sm rounded-full">Industry Insights</span>
+                            </div>
+                            <div class="h-48 bg-gradient-to-r from-primary-500 to-primary-600"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Quantum Computing in Financial Markets</h3>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-slate-400 mb-4">
+                                <span class="flex items-center mr-4">
+                                    <i class="far fa-calendar mr-2"></i>
+                                    October 15, 2023
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    15 min read
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-slate-300 mb-6">How quantum computing is poised to revolutionize algorithmic trading, risk management, and portfolio optimization.</p>
+                            <div class="flex gap-4">
+                                <button class="flex-1 px-4 py-2 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                    Preview
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report 2: Global Inflation -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-secondary-500 text-white text-sm rounded-full">Market Trends</span>
+                            </div>
+                            <div class="h-48 bg-gradient-to-r from-secondary-500 to-secondary-600"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Global Inflation Outlook 2024</h3>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-slate-400 mb-4">
+                                <span class="flex items-center mr-4">
+                                    <i class="far fa-calendar mr-2"></i>
+                                    October 10, 2023
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    22 min read
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-slate-300 mb-6">Analysis of inflationary pressures across major economies and implications for monetary policy and asset prices.</p>
+                            <div class="flex gap-4">
+                                <button class="flex-1 px-4 py-2 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                    Preview
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report 3: Cryptocurrency -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-primary-500 text-white text-sm rounded-full">Financial Analysis</span>
+                            </div>
+                            <div class="h-48 bg-gradient-to-r from-primary-500 to-primary-600"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Cryptocurrency Correlation Patterns</h3>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-slate-400 mb-4">
+                                <span class="flex items-center mr-4">
+                                    <i class="far fa-calendar mr-2"></i>
+                                    October 5, 2023
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    18 min read
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-slate-300 mb-6">How digital assets correlate with traditional markets during different market regimes and volatility environments.</p>
+                            <div class="flex gap-4">
+                                <button class="flex-1 px-4 py-2 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                    Preview
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report 4: AI and ML -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-primary-500 text-white text-sm rounded-full">Technology</span>
+                            </div>
+                            <div class="h-48 bg-gradient-to-r from-primary-500 to-primary-600"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">AI and Machine Learning in Trading</h3>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-slate-400 mb-4">
+                                <span class="flex items-center mr-4">
+                                    <i class="far fa-calendar mr-2"></i>
+                                    September 28, 2023
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    25 min read
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-slate-300 mb-6">Comprehensive overview of how AI and ML are transforming trading strategies, data analysis, and execution.</p>
+                            <div class="flex gap-4">
+                                <button class="flex-1 px-4 py-2 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                    Preview
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report 5: Trade Wars -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-secondary-500 text-white text-sm rounded-full">Geopolitical</span>
+                            </div>
+                            <div class="h-48 bg-gradient-to-r from-secondary-500 to-secondary-600"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Trade Wars and Market Implications</h3>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-slate-400 mb-4">
+                                <span class="flex items-center mr-4">
+                                    <i class="far fa-calendar mr-2"></i>
+                                    September 20, 2023
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    20 min read
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-slate-300 mb-6">Analysis of how ongoing trade tensions between major economies are affecting global supply chains and markets.</p>
+                            <div class="flex gap-4">
+                                <button class="flex-1 px-4 py-2 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                    Preview
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report 6: ESG -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="relative">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-secondary-500 text-white text-sm rounded-full">ESG</span>
+                            </div>
+                            <div class="h-48 bg-gradient-to-r from-secondary-500 to-secondary-600"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Sustainable Investing Performance</h3>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-slate-400 mb-4">
+                                <span class="flex items-center mr-4">
+                                    <i class="far fa-calendar mr-2"></i>
+                                    September 15, 2023
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    16 min read
+                                </span>
+                            </div>
+                            <p class="text-gray-600 dark:text-slate-300 mb-6">Examining whether ESG investments deliver competitive returns while aligning with values and sustainability goals.</p>
+                            <div class="flex gap-4">
+                                <button class="flex-1 px-4 py-2 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+                                    Preview
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                            <!-- Subscribe Section -->
+        <section class="py-16 bg-white dark:bg-slate-800">
+            <div class="container mx-auto px-4">
+                <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-12 max-w-5xl mx-auto relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 transform rotate-45 bg-white/10"></div>
+                    <div class="text-center relative z-10">
+                        <h2 class="text-3xl font-bold text-white mb-6">Get Premium Research</h2>
+                        <p class="text-white/90 mb-8 text-lg">Subscribe to receive our in-depth market analysis and exclusive reports.</p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary-300 dark:bg-slate-800 dark:text-white dark:focus:ring-primary-500">
+                            <button class="px-8 py-3 bg-white text-primary-500 rounded-lg font-semibold hover:bg-white/90 transition-colors">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Original footer preserved -->
+    <!-- <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>QuFin</h3>
+                <p>AI-powered trading intelligence platform providing cutting-edge analytics and alternative data signals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">AI Score Grid</a></li>
+                    <li><a href="#">Market Data</a></li>
+                    <li><a href="#">Trading Strategies</a></li>
+                    <li><a href="#">Backtesting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Learning Academy</a></li>
+                    <li><a href="#">Market Reports</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2023 QuFin. All rights reserved.
+        </div>
+    </footer> -->
+
+    <!-- Canonical footer from home.html -->
+    <footer class="bg-slate-900 text-white">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About QuFin</h3>
+                    <p class="text-slate-400">QuFin is a cutting-edge AI-powered investment platform that provides innovative tools and strategies for institutional investors.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-slate-400 hover:text-white">Home</a></li>
+                        <li><a href="product.html" class="text-slate-400 hover:text-white">Product</a></li>
+                        <li><a href="pricing.html" class="text-slate-400 hover:text-white">Pricing</a></li>
+                        <li><a href="resources.html" class="text-slate-400 hover:text-white">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <div class="space-y-2 text-slate-400">
+                        <p>Email: info@qufin.com</p>
+                        <p>Phone: +1 (123) 456-7890</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="hover:text-white"><img src="../assets/images/x-logo-twitter-icon.png" alt="Twitter" class="h-6 w-6"></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-linkedin text-2xl"></i></a>
+                            <a href="#" class="hover:text-white"><img src="../assets/images/whatsapp30x30.png" alt="WhatsApp" class="h-6 w-6"></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-800 text-center">
+                <p class="text-slate-400">&copy; 2023 QuFin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>

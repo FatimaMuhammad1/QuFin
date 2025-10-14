@@ -1,0 +1,22 @@
+qufin-website/
+│
+├── index.html
+├── styles/
+│   ├── main.css
+│
+├── scripts/
+│   ├── main.js
+│
+├── pages/
+│   ├── home.html
+│   ├── about.html
+│   ├── product.html
+│   ├── pricing.html
+│   ├── resources.html
+│   ├── affiliate.html
+│   └── dashboard.html
+│
+└── assets/
+    ├── images/
+    ├── videos/
+    └── logos/

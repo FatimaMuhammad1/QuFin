@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuFin - Pricing</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100">
+    <!-- Original header preserved -->
+    <!-- <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="/assets/logos/Qufin-logo.png" alt="QuFin Logo" class="logo-img">
+                <a href="../index.html" class="logo">Qu<span class="logo-accent">Fin</span></a>
+            </div>
+            <nav id="navMenu" class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="product.html" class="nav-link"><i class="fas fa-box"></i>Product</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Score Grid</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Forex</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Energies</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Metals</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Futures</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Commodities</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/pages/pricing.html" class="nav-link"><i class="fas fa-dollar-sign"></i>Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aiscoregrid.html" class="nav-link"><i class="fas fa-chart-line"></i>AI Score Grid</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Forex Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Equity Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Commodity Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Crypto Scores</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Country Scores</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="aistrategies.html" class="nav-link"><i class="fas fa-cogs"></i>AI Strategies</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Long/Short Equity</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Market Neutral</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Global Macro</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Arbitrage</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Quantitative</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="globaldata.html" class="nav-link"><i class="fas fa-globe"></i>Global Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="resources.html" class="nav-link"><i class="fas fa-book"></i>Resources</a>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Market Simulator</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">AI Explainability</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Macro Data Decoder</a></li>
+                            <li class="dropdown-item"><a href="#" class="dropdown-link">Economic Calendar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link"><i class="fas fa-file-alt"></i>Reports</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="auth-section">
+                <button id="authToggle" class="auth-toggle"><i class="fas fa-user"></i>Login</button>
+            </div>
+            <button id="mobileToggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header> -->
+
+    <!-- Canonical header from home.html -->
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo-container p-1 rounded-lg">
+                    <!-- Add a background to make white logo visible -->
+                    <img src="../assets/logos/qufin-logo.png" alt="QuFin Logo" class="logo-img" style="height:1.5625rem; background:#222; border-radius:8px; padding:4px;">
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-1">
+                <!-- Navigation links use absolute paths for cross-page navigation. -->
+                <!-- All links start with /QuFin%20Moduelar%20V.5/ for consistent navigation from any page. -->
+                <a href="/QuFin%20Moduelar%20V.5/index.html" class="nav-link"><i class="fa-solid fa-home mr-2"></i>Home</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Product</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/pricing.html" class="nav-link"><i class="fa-solid fa-dollar-sign mr-2"></i>Pricing</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/aiscoregrid.html" class="nav-link"><i class="fa-solid fa-chart-line mr-2"></i>AI Score Grid</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/aistrategies.html" class="nav-link"><i class="fa-solid fa-cogs mr-2"></i>AI Strategies</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/globaldata.html" class="nav-link"><i class="fa-solid fa-globe mr-2"></i>Global Data</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/resources.html" class="nav-link"><i class="fa-solid fa-book mr-2"></i>Resources</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/reports.html" class="nav-link"><i class="fa-solid fa-file-alt mr-2"></i>Reports</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Login button removed -->
+                <button class="md:hidden p-2 rounded-lg"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="authModal" class="auth-modal">
+        <div class="auth-container">
+            <button class="auth-close"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <div class="auth-tab active">Login</div>
+                <div class="auth-tab">Sign Up</div>
+            </div>
+            <div class="auth-forms">
+                <div class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password">
+                    </div>
+                    <button class="auth-submit">Login</button>
+                </div>
+                <div class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Enter your password">
+                    </div>
+                    <button class="auth-submit">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient text-white py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Transparent Pricing for Every Trading Need</h1>
+                    <p class="text-xl opacity-90 mb-8">Choose the plan that best fits your investment strategy. All plans include our core AI-powered features.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="py-16 bg-gray-50 dark:bg-slate-900">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Starter Plan -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="p-8 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Starter</h3>
+                            <div class="flex items-baseline">
+                                <span class="text-4xl font-bold text-primary-500">$49</span>
+                                <span class="text-gray-500 dark:text-slate-400 ml-1">/month</span>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-slate-300">Perfect for individual traders starting their quantitative journey</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    Basic AI Score Grid
+                                </li>
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    5 Strategy Backtests
+                                </li>
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    Limited Market Data
+                                </li>
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    Email Support
+                                </li>
+                            </ul>
+                            <button class="w-full mt-8 bg-primary-500 text-white py-3 px-4 rounded-lg hover:bg-primary-600 transition-colors">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Professional Plan -->
+                    <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-1 transition-all duration-300 relative">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 transform rotate-45 bg-white/10"></div>
+                        <div class="p-8 border-b border-white/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-2xl font-semibold text-white">Professional</h3>
+                                <span class="px-3 py-1 text-sm text-white bg-white/20 rounded-full">Popular</span>
+                            </div>
+                            <div class="flex items-baseline">
+                                <span class="text-4xl font-bold text-white">$99</span>
+                                <span class="text-white/80 ml-1">/month</span>
+                            </div>
+                            <p class="mt-4 text-white/90">Advanced features for serious traders</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-white">
+                                    <i class="fas fa-check mr-3"></i>
+                                    Full AI Score Grid
+                                </li>
+                                <li class="flex items-center text-white">
+                                    <i class="fas fa-check mr-3"></i>
+                                    Unlimited Backtests
+                                </li>
+                                <li class="flex items-center text-white">
+                                    <i class="fas fa-check mr-3"></i>
+                                    Full Market Data Access
+                                </li>
+                                <li class="flex items-center text-white">
+                                    <i class="fas fa-check mr-3"></i>
+                                    Priority Support
+                                </li>
+                            </ul>
+                            <button class="w-full mt-8 bg-white text-primary-500 py-3 px-4 rounded-lg hover:bg-white/90 transition-colors">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="p-8 border-b border-gray-200 dark:border-slate-700">
+                            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Enterprise</h3>
+                            <div class="flex items-baseline">
+                                <span class="text-4xl font-bold text-primary-500">$249</span>
+                                <span class="text-gray-500 dark:text-slate-400 ml-1">/month</span>
+                            </div>
+                            <p class="mt-4 text-gray-600 dark:text-slate-300">Complete solution for institutional investors</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4">
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    Premium AI Score Grid
+                                </li>
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    Unlimited Backtests
+                                </li>
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    Global + Alternative Data
+                                </li>
+                                <li class="flex items-center text-gray-700 dark:text-slate-300">
+                                    <i class="fas fa-check text-primary-500 mr-3"></i>
+                                    24/7 Dedicated Support
+                                </li>
+                            </ul>
+                            <button class="w-full mt-8 bg-primary-500 text-white py-3 px-4 rounded-lg hover:bg-primary-600 transition-colors">
+                                Get Started
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="mt-20 max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Can I change my plan later?</h3>
+                            <p class="text-gray-600 dark:text-slate-300">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">What payment methods do you accept?</h3>
+                            <p class="text-gray-600 dark:text-slate-300">We accept all major credit cards, wire transfers, and cryptocurrency payments.</p>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Is there a free trial available?</h3>
+                            <p class="text-gray-600 dark:text-slate-300">Yes, all plans come with a 14-day free trial. No credit card required to start.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Original footer preserved -->
+    <!-- <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>QuFin</h3>
+                <p>AI-powered trading intelligence platform providing cutting-edge analytics and alternative data signals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">AI Score Grid</a></li>
+                    <li><a href="#">Market Data</a></li>
+                    <li><a href="#">Trading Strategies</a></li>
+                    <li><a href="#">Backtesting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Learning Academy</a></li>
+                    <li><a href="#">Market Reports</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2023 QuFin. All rights reserved.
+        </div>
+    </footer> -->
+
+    <!-- Canonical footer from home.html -->
+    <footer class="bg-slate-900 text-white">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About QuFin</h3>
+                    <p class="text-slate-400">QuFin is a cutting-edge AI-powered investment platform that provides innovative tools and strategies for institutional investors.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-slate-400 hover:text-white">Home</a></li>
+                        <li><a href="product.html" class="text-slate-400 hover:text-white">Product</a></li>
+                        <li><a href="pricing.html" class="text-slate-400 hover:text-white">Pricing</a></li>
+                        <li><a href="resources.html" class="text-slate-400 hover:text-white">Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <div class="space-y-2 text-slate-400">
+                        <p>Email: info@qufin.com</p>
+                        <p>Phone: +1 (123) 456-7890</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="hover:text-white"><img src="../assets/images/x-logo-twitter-icon.png" alt="Twitter" class="h-6 w-6"></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-linkedin text-2xl"></i></a>
+                            <a href="#" class="hover:text-white"><img src="../assets/images/whatsapp30x30.png" alt="WhatsApp" class="h-6 w-6"></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 bg-slate-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-slate-800 text-center">
+                <p class="text-slate-400">&copy; 2023 QuFin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>
