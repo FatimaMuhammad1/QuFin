@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuFin - Product</title>
+    <script>(function(){try{const t=localStorage.getItem('theme');const p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches; if(t==='dark'||(!t&&p))document.documentElement.classList.add('dark')}catch(e){}})();</script>
+    <title>QuFin - Products</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -56,7 +57,7 @@
                 <!-- Navigation links use absolute paths for cross-page navigation. -->
                 <!-- All links start with /QuFin%20Moduelar%20V.5/ for consistent navigation from any page. -->
                 <a href="/QuFin%20Moduelar%20V.5/index.html" class="nav-link"><i class="fa-solid fa-home mr-2"></i>Home</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Product</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Products</a>
                 <a href="/QuFin%20Moduelar%20V.5/pages/pricing.html" class="nav-link"><i class="fa-solid fa-dollar-sign mr-2"></i>Pricing</a>
                 <a href="/QuFin%20Moduelar%20V.5/pages/aiscoregrid.html" class="nav-link"><i class="fa-solid fa-chart-line mr-2"></i>AI Score Grid</a>
                 <a href="/QuFin%20Moduelar%20V.5/pages/aistrategies.html" class="nav-link"><i class="fa-solid fa-cogs mr-2"></i>AI Strategies</a>
@@ -109,9 +110,9 @@
     <!-- Hero Section (index-like) -->
     <section class="hero-gradient text-white py-8 md:py-12">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Products</h1>
-                <p class="text-xl mb-6 opacity-90">Comprehensive trading tools and analytics powered by artificial intelligence</p>
+                <div class="max-w-6xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6" data-i18n="products.title">Our Products</h1>
+                <p class="text-xl mb-6 opacity-90" data-i18n="products.subtitle">Comprehensive trading tools and analytics powered by artificial intelligence</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="#" class="px-6 py-3 bg-white text-primary-500 font-semibold rounded-lg hover:bg-gray-100 transition">Explore Platform</a>
                     <a href="#" class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition">View Pricing</a>
@@ -126,37 +127,37 @@
                 <div class="product-grid">
                     <div class="product-card feature-card">
                         <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3"><i class="fa-solid fa-chart-line text-primary text-2xl"></i></div>
-                        <h3 class="product-title">AI Score Grid</h3>
-                        <p class="product-desc">Our proprietary scoring system evaluates thousands of data points to rate investment opportunities across multiple asset classes.</p>
+                        <h3 class="product-title" data-i18n="product.ai_score_grid.title">AI Score Grid</h3>
+                        <p class="product-desc" data-i18n="product.ai_score_grid.desc">Our proprietary scoring system evaluates thousands of data points to rate investment opportunities across multiple asset classes.</p>
                         <a href="#" class="product-link mt-4">Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
                     </div>
                     <div class="product-card feature-card">
                         <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3"><i class="fa-solid fa-chart-bar text-primary text-2xl"></i></div>
-                        <h3 class="product-title">Advanced Analytics</h3>
-                        <p class="product-desc">Deep dive into market trends, correlations, and predictive patterns with our advanced visualization tools.</p>
+                        <h3 class="product-title" data-i18n="product.advanced_analytics.title">Advanced Analytics</h3>
+                        <p class="product-desc" data-i18n="product.advanced_analytics.desc">Deep dive into market trends, correlations, and predictive patterns with our advanced visualization tools.</p>
                         <a href="#" class="product-link mt-4">Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
                     </div>
                     <div class="product-card feature-card">
                         <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3"><i class="fa-solid fa-cogs text-primary text-2xl"></i></div>
-                        <h3 class="product-title">AI Strategies</h3>
-                        <p class="product-desc">Access a suite of pre-built algorithmic trading strategies or create your own with our strategy builder.</p>
+                        <h3 class="product-title" data-i18n="product.ai_strategies.title">AI Strategies</h3>
+                        <p class="product-desc" data-i18n="product.ai_strategies.desc">Access a suite of pre-built algorithmic trading strategies or create your own with our strategy builder.</p>
                         <a href="#" class="product-link mt-4">Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
                     </div>
                     <div class="product-card feature-card">
                         <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3"><i class="fa-solid fa-globe text-primary text-2xl"></i></div>
-                        <h3 class="product-title">Global Data</h3>
-                        <p class="product-desc">Comprehensive market data covering equities, forex, commodities, cryptocurrencies, and economic indicators.</p>
+                        <h3 class="product-title" data-i18n="product.global_data.title">Global Data</h3>
+                        <p class="product-desc" data-i18n="product.global_data.desc">Comprehensive market data covering equities, forex, commodities, cryptocurrencies, and economic indicators.</p>
                         <a href="#" class="product-link mt-4">Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
                     </div>
                     <div class="product-card feature-card">
                         <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3"><i class="fa-solid fa-book text-primary text-2xl"></i></div>
-                        <h3 class="product-title">Resources</h3>
-                        <p class="product-desc">Educational content, market reports, and trading insights to help you make informed decisions.</p>
+                        <h3 class="product-title" data-i18n="product.resources.title">Resources</h3>
+                        <p class="product-desc" data-i18n="product.resources.desc">Educational content, market reports, and trading insights to help you make informed decisions.</p>
                         <a href="#" class="product-link mt-4">Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
                     </div>
                     <div class="product-card feature-card">
                         <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3"><i class="fa-solid fa-file-alt text-primary text-2xl"></i></div>
-                        <h3 class="product-title">In-Depth Reports</h3>
+                        <h3 class="product-title" data-i18n="product.reports.title">In-Depth Reports</h3>
                         <p class="product-desc">Detailed analysis on market trends, economic events, and investment opportunities.</p>
                         <a href="#" class="product-link mt-4">Learn More <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
                     </div>
@@ -164,6 +165,138 @@
             </div>
         </div>
     </main>
+
+    <!-- Additional Product Sections -->
+    <section class="py-12 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-6">Video Integration</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                <!-- Self-hosted video (1:3 ratio container) -->
+                <div class="md:col-span-2">
+                    <div class="video-container mb-4" style="aspect-ratio: 3 / 1; background:#000; border-radius:8px; overflow:hidden;">
+                        <!-- Example self-hosted video element -->
+                        <video controls poster="../assets/images/video-poster.png" style="width:100%; height:100%; object-fit:cover;">
+                            <source src="../assets/videos/demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-gray-600 dark:text-slate-300">Watch our product walkthrough or a demo of the AI Score Grid and strategy builder in action. The player supports H.264 MP4 and will fallback gracefully on unsupported browsers.</p>
+                </div>
+
+                <!-- YouTube embed / alternative -->
+                <div class="md:col-span-1">
+                    <div class="mb-4 rounded-lg overflow-hidden shadow-sm">
+                        <iframe class="w-full h-48" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="text-gray-600 dark:text-slate-300">Prefer YouTube? We include curated videos and tutorials as an alternative to self-hosted content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50 dark:bg-slate-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-6">ESG Score Menu</h2>
+            <p class="text-gray-600 dark:text-slate-300 mb-4">ESG scores help evaluate environmental, social, and governance factors across assets and companies. This menu will expose ESG datasets, scoring rules, and filters.</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold mb-2">ESG Overview</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-200">Summary of ESG methodology and data sources.</p>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold mb-2">Sector Scores</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-200">View ESG scores by industry and sector.</p>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold mb-2">Company Scores</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-200">Lookup company-level ESG ratings and components.</p>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold mb-2">Custom Filters</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-200">Create custom ESG filters for screening.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-6">Broker API Documentation (Placeholder)</h2>
+            <p class="text-gray-600 dark:text-slate-300 mb-4">We'll provide detailed API docs for supported brokers (REST endpoints, WebSocket examples, auth flows). Below is a placeholder sample for the API endpoints and authentication methods.</p>
+            <div class="overflow-auto rounded-lg bg-gray-100 dark:bg-slate-800 p-4">
+                <pre class="text-sm text-slate-700 dark:text-slate-200"><code>// Example
+GET /api/v1/brokers/accounts
+Authorization: Bearer &lt;API_KEY&gt;
+
+POST /api/v1/brokers/orders
+{
+  "symbol":"AAPL",
+  "qty": 10,
+  "side":"buy",
+  "type":"market"
+}
+                </code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50 dark:bg-slate-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-6">Product Comparison Tools</h2>
+            <p class="text-gray-600 dark:text-slate-300 mb-4">Compare products side-by-side across features, pricing, and datasets.</p>
+            <div class="bg-white dark:bg-slate-700 rounded-lg p-4 shadow-sm">
+                <!-- Simple comparison table placeholder -->
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-sm text-slate-600 dark:text-slate-300">
+                            <th>Feature</th>
+                            <th>AI Score Grid</th>
+                            <th>AI Strategies</th>
+                            <th>Global Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2">Real-time data</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Backtesting</td>
+                            <td>Limited</td>
+                            <td>Full</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">ESG Scores</td>
+                            <td>Yes</td>
+                            <td>Optional</td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white dark:bg-slate-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-6">Interactive Demos</h2>
+            <p class="text-gray-600 dark:text-slate-300 mb-4">Embed live demos, sandboxes, and interactive components where users can try strategies and see results.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-50 dark:bg-slate-800 rounded-lg shadow-sm">
+                    <h3 class="font-semibold mb-2">Strategy Sandbox</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-200">A small playground to tweak parameters and preview performance charts (placeholder).</p>
+                </div>
+                <div class="p-4 bg-gray-50 dark:bg-slate-800 rounded-lg shadow-sm">
+                    <h3 class="font-semibold mb-2">Backtest Runner</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-200">Run quick backtests with sample data and visualize results (placeholder).</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="bg-slate-800 text-slate-300 pt-8 pb-4">
         <div class="container mx-auto px-2">

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{const t=localStorage.getItem('theme');const p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches; if(t==='dark'||(!t&&p))document.documentElement.classList.add('dark')}catch(e){}})();</script>
     <title>QuFin - AI-Powered Trading Intelligence</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
@@ -56,7 +57,7 @@
                         <a href="#" class="nav-link" data-page="page-home"><i class="fas fa-home"></i>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="page-product"><i class="fas fa-box"></i>Product</a>
+                        <a href="#" class="nav-link" data-page="page-product"><i class="fas fa-box"></i>Products</a>
                         <ul class="dropdown">
                             <li class="dropdown-item"><a href="#" class="dropdown-link" data-page="page-product-ai-score">AI Score Grid</a></li>
                             <li class="dropdown-item"><a href="#" class="dropdown-link" data-page="page-product-forex">Forex</a></li>
@@ -197,7 +198,7 @@
             <div class="products">
                 <div class="container">
                     <div class="section-title">
-                        <h2>Our Products</h2>
+                        <h2 data-i18n="products.title">Our Products</h2>
                         <p>Comprehensive trading tools and analytics powered by artificial intelligence</p>
                     </div>
                     <div class="product-grid">
@@ -205,7 +206,7 @@
                             <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
                                 <i class="fas fa-chart-line text-primary-500 text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-semibold mb-3">AI Score Grid</h3>
+                            <h3 class="text-lg font-semibold mb-3" data-i18n="product.ai_score_grid.title">AI Score Grid</h3>
                             <p class="text-gray-600 dark:text-slate-400 mb-4">Our proprietary scoring system evaluates thousands of data points to rate investment opportunities across multiple asset classes.</p>
                             <a href="#" class="text-primary-500 font-medium hover:text-primary-600 flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
@@ -213,7 +214,7 @@
                             <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
                                 <i class="fas fa-chart-bar text-primary-500 text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-semibold mb-3">Advanced Analytics</h3>
+                            <h3 class="text-lg font-semibold mb-3" data-i18n="product.advanced_analytics.title">Advanced Analytics</h3>
                             <p class="text-gray-600 dark:text-slate-400 mb-4">Deep dive into market trends, correlations, and predictive patterns with our advanced visualization tools.</p>
                             <a href="#" class="text-primary-500 font-medium hover:text-primary-600 flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
@@ -221,7 +222,7 @@
                             <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
                                 <i class="fas fa-cogs text-primary-500 text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-semibold mb-3">AI Strategies</h3>
+                            <h3 class="text-lg font-semibold mb-3" data-i18n="product.ai_strategies.title">AI Strategies</h3>
                             <p class="text-gray-600 dark:text-slate-400 mb-4">Access a suite of pre-built algorithmic trading strategies or create your own with our strategy builder.</p>
                             <a href="#" class="text-primary-500 font-medium hover:text-primary-600 flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
@@ -229,7 +230,7 @@
                             <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
                                 <i class="fas fa-globe text-primary-500 text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-semibold mb-3">Global Data</h3>
+                            <h3 class="text-lg font-semibold mb-3" data-i18n="product.global_data.title">Global Data</h3>
                             <p class="text-gray-600 dark:text-slate-400 mb-4">Comprehensive market data covering equities, forex, commodities, cryptocurrencies, and economic indicators.</p>
                             <a href="#" class="text-primary-500 font-medium hover:text-primary-600 flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>
@@ -237,7 +238,7 @@
                             <div class="w-12 h-12 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
                                 <i class="fas fa-book text-primary-500 text-2xl"></i>
                             </div>
-                            <h3 class="text-lg font-semibold mb-3">Resources</h3>
+                            <h3 class="text-lg font-semibold mb-3" data-i18n="product.resources.title">Resources</h3>
                             <p class="text-gray-600 dark:text-slate-400 mb-4">Educational content, market reports, and trading insights to help you make informed decisions.</p>
                             <a href="#" class="text-primary-500 font-medium hover:text-primary-600 flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
                         </div>

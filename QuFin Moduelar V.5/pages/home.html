@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{const t=localStorage.getItem('theme');const p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches; if(t==='dark'||(!t&&p))document.documentElement.classList.add('dark')}catch(e){}})();</script>
     <title>QuFin - Home</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
@@ -31,7 +32,7 @@
                 <!-- Navigation links use absolute paths for cross-page navigation. -->
                 <!-- All links start with /QuFin%20Moduelar%20V.5/ for consistent navigation from any page. -->
                 <a href="/QuFin%20Moduelar%20V.5/index.html" class="nav-link"><i class="fa-solid fa-home mr-2"></i>Home</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Product</a>
+                <a href="/QuFin%20Moduelar%20V.5/pages/product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Products</a>
                 <a href="/QuFin%20Moduelar%20V.5/pages/pricing.html" class="nav-link"><i class="fa-solid fa-dollar-sign mr-2"></i>Pricing</a>
                 <a href="/QuFin%20Moduelar%20V.5/pages/aiscoregrid.html" class="nav-link"><i class="fa-solid fa-chart-line mr-2"></i>AI Score Grid</a>
                 <a href="/QuFin%20Moduelar%20V.5/pages/aistrategies.html" class="nav-link"><i class="fa-solid fa-cogs mr-2"></i>AI Strategies</a>
@@ -105,7 +106,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="feature-card feature-card p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
                         <i class="fa-solid fa-chart-line feature-icon text-2xl text-primary mb-3"></i>
-                        <h3 class="feature-title font-semibold mb-2">AI Score Grid</h3>
+                        <h3 class="feature-title font-semibold mb-2" data-i18n="product.ai_score_grid.title">AI Score Grid</h3>
                         <p class="feature-desc text-gray-600 dark:text-slate-400">Our proprietary scoring system evaluates thousands of data points to rate investment opportunities.</p>
                     </div>
                     <div class="feature-card p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
@@ -139,7 +140,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Products</h3>
+                    <h3 class="text-white text-lg font-semibold mb-4" data-i18n="products.title">Products</h3>
                     <ul class="space-y-3">
                         <li><a href="product.html" class="hover:text-white transition">AI Score Grid</a></li>
                         <li><a href="product.html" class="hover:text-white transition">Market Data</a></li>
