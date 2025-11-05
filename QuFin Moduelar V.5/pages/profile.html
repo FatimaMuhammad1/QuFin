@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuFin - Profile</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/site-theme.css">
+    <style>
+        /* Page-local: hide the global header on this page only */
+        header { display: none !important; height: 0 !important; padding: 0 !important; margin: 0 !important; }
+        
+        /* Modern profile layout */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        main.page-wrap {
+            min-height: calc(100vh - 4rem);
+            padding: 2rem;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .panel {
+            background: #1e293b;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--quantum-blue), var(--ai-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 600;
+            margin: 0 auto 1.5rem;
+        }
+
+        .sidebar .name {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .sidebar .email {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .nav-list li {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-list li:hover {
+            background: rgba(14, 165, 233, 0.2);
+            color: var(--quantum-blue);
+        }
+
+        /* Content area styling */
+        .content h2 {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .muted {
+            color: #94a3b8;
+        }
+
+        .account-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .meta {
+            font-size: 0.875rem;
+            color: #f1f5f9;
+        }
+
+        .roles {
+            color: #94a3b8;
+            padding: 0.25rem 0.75rem;
+            background: #334155;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Form inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #334155;
+            border: 1px solid #475569;
+            border-radius: 0.5rem;
+            color: #f1f5f9;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--quantum-blue);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background: var(--quantum-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #0284c7;
+            transform: translateY(-1px);
+        }
+
+        .btn-signout {
+            background: #ef4444;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-signout:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 920px) {
+            .container {
+                padding: 1rem;
+            }
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .sidebar {
+                order: 2;
+            }
+            .panel {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-brain"></i></div>
+                    <div class="logo-text">QuFin.ai</div>
+                </div>
+
+                <nav class="nav-desktop">
+                    <div class="nav-item"><span class="nav-link nav-parent" role="button" tabindex="0"><i class="fas fa-chart-line"></i> AI Analytics</span></div>
+                    <div class="nav-item"><a href="aistrategies.html" class="nav-link"><i class="fas fa-robot"></i> Trading Intelligence</a></div>
+                    <div class="nav-item"><a href="product.html" class="nav-link"><i class="fas fa-cube"></i> AI Products</a></div>
+                    <div class="nav-item"><a href="globaldata.html" class="nav-link"><i class="fas fa-globe"></i> Global Data</a></div>
+                    <div class="nav-item"><a href="resources.html" class="nav-link"><i class="fas fa-book"></i> Resources</a></div>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                    <button class="btn-primary" id="loginBtn"><i class="fas fa-user"></i> Login</button>
+                    <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="container">
+                <nav class="mobile-nav">
+                    <div class="mobile-nav-item"><a href="aiscoregrid.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i> AI Analytics</a></div>
+                    <div class="mobile-nav-item"><a href="aistrategies.html" class="mobile-nav-link"><i class="fas fa-robot"></i> Trading Intelligence</a></div>
+                    <div class="mobile-nav-item"><a href="product.html" class="mobile-nav-link"><i class="fas fa-cube"></i> AI Products</a></div>
+                    <div class="mobile-nav-item"><a href="globaldata.html" class="mobile-nav-link"><i class="fas fa-globe"></i> Global Data</a></div>
+                    <div class="mobile-nav-item"><a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a></div>
+                    <div class="mobile-nav-item"><button class="btn-primary" style="width:100%; justify-content:center;" id="mobileLoginBtn"><i class="fas fa-user"></i> Login</button></div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main class="page-wrap">
+            <div class="profile-grid">
+                <aside class="panel sidebar">
+                    <div id="avatar" class="avatar">U</div>
+                    <div class="name" id="full_name">User</div>
+                    <div class="email muted" id="email">email@example.com</div>
+
+                    <ul class="nav-list" aria-label="Profile navigation">
+                        <li data-section="account">Account</li>
+                        <li data-section="preferences">Preferences</li>
+                        <li data-section="security">Security</li>
+                        <li data-section="integrations">Integrations</li>
+                    </ul>
+                    <div style="text-align:center;margin-top:14px">
+                        <button id="signoutBtn" class="btn-signout">Sign out</button>
+                    </div>
+                </aside>
+
+                <section class="panel content">
+                    <div class="account-row">
+                        <div>
+                            <h2>Account details</h2>
+                            <div class="muted">Manage your account and settings</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:16px">
+                        <h3 style="margin-bottom:6px">Profile</h3>
+                        <div class="meta">Display name: <strong id="display_name">User</strong></div>
+                        <div class="meta" style="margin-top:6px">Email: <span id="email_copy" class="muted">email@example.com</span></div>
+                    </div>
+
+                    <hr style="margin:18px 0" />
+
+                    <div id="details_section">
+                        <h3 style="margin-bottom:6px">Roles</h3>
+                        <div class="roles" id="roles">user</div>
+
+                        <div style="margin-top:20px">
+                            <h3>Preferences</h3>
+                            <p class="muted">Your saved preferences will appear here. (Stored in MongoDB)</p>
+                        </div>
+                    </div>
+
+                    <!-- Waiting / error panel shown when profile isn't ready yet -->
+                    <div id="waitingPanel" style="display:none;margin-top:18px;padding:12px;background:#fff7ed;border-radius:8px;border:1px solid #fce6c7">
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                            <div>
+                                <strong id="waitingTitle">Waiting for profile...</strong>
+                                <div class="muted" id="waitingMsg">The site is waiting for your login/session to become active. Click Retry to check again, or Go back to return to the homepage.</div>
+                            </div>
+                            <div style="display:flex;gap:8px">
+                                <button id="retryBtn" class="btn">Retry</button>
+                                <button id="goBackBtn" class="btn" style="background:#64748b">Go back</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Change password form (posts to backend if available) -->
+                    <div id="security_section" style="margin-top:20px">
+                        <h3 style="margin-bottom:6px">Security</h3>
+                        <p class="muted">Change your password. This will call the backend change-password endpoint if available.</p>
+                        <div style="margin-top:8px;max-width:480px">
+                            <label class="muted">Current password (optional)</label>
+                            <input id="current_password" type="password" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e6eef4" />
+                            <label class="muted" style="margin-top:8px;display:block">New password</label>
+                            <input id="new_password" type="password" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e6eef4" />
+                            <label class="muted" style="margin-top:8px;display:block">Confirm new password</label>
+                            <input id="confirm_password" type="password" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e6eef4" />
+                            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+                                <button id="changePwdBtn" class="btn">Change password</button>
+                                <div id="changePwdMsg" class="muted" style="font-size:13px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="/scripts/auth-client.js"></script>
+    <script>
+
+        // Load and render the user's profile using the existing auth client.
+        // To avoid flip-flop (modal <-> profile <-> index), poll briefly for profile data
+        // before redirecting. This handles race conditions where another script sets the token shortly.
+        async function tryGetProfile(){
+            try{
+                if (window.qufinAuth && typeof window.qufinAuth.me === 'function'){
+                    return await window.qufinAuth.me();
+                } else if (window.authHandler && typeof window.authHandler.getProfile === 'function'){
+                    return await window.authHandler.getProfile();
+                }
+                // Fallback: if a token is present in localStorage, call the backend profile endpoint directly
+                const token = localStorage.getItem('token') || localStorage.getItem('qufin_token') || null;
+                if (token){
+                    try{
+                        // Call backend auth/profile on the API host (same origin as other auth calls)
+                        const res = await fetch('http://127.0.0.1:8000/auth/profile', {
+                            method: 'GET',
+                            headers: { 'Authorization': 'Bearer ' + token }
+                        });
+                        if (res.ok){
+                            const body = await res.json().catch(()=>null);
+                            if (body && body.email) return body;
+                        } else {
+                            // 401 or other -> not authenticated
+                            return null;
+                        }
+                    }catch(e){
+                        console.warn('Direct profile fetch failed', e);
+                    }
+                }
+            }catch(e){
+                console.warn('tryGetProfile error', e);
+            }
+            return null;
+        }
+
+        async function loadProfile(){
+            const maxAttempts = 20; // ~5s total at 250ms interval
+            const delay = ms => new Promise(r => setTimeout(r, ms));
+            let user = null;
+            // If a token exists, try one immediate direct fetch before displaying waiting UI
+            const earlyToken = localStorage.getItem('token') || localStorage.getItem('qufin_token') || null;
+            if (earlyToken){
+                const earlyUser = await tryGetProfile();
+                window.updateDevDebug && window.updateDevDebug('early attempt', 0);
+                if (earlyUser && earlyUser.email){
+                    // profile resolved immediately — render and return
+                    const fullName = earlyUser.full_name || earlyUser.name || (earlyUser.email && earlyUser.email.split('@')[0]) || 'User';
+                    document.getElementById('full_name').textContent = fullName;
+                    const dn = document.getElementById('display_name'); if (dn) dn.textContent = fullName;
+                    const em = document.getElementById('email'); if (em) em.textContent = earlyUser.email;
+                    const emc = document.getElementById('email_copy'); if (emc) emc.textContent = earlyUser.email;
+                    const r = document.getElementById('roles'); if (r) r.textContent = (earlyUser.roles && earlyUser.roles.length) ? earlyUser.roles.join(', ') : 'user';
+                    const av = document.getElementById('avatar'); if (av) av.textContent = (fullName[0] || 'U').toUpperCase();
+                    window.updateDevDebug && window.updateDevDebug('early profile loaded: '+earlyUser.email);
+                    try{ hideWaiting(); }catch(e){}
+                    return;
+                }
+            }
+            // show waiting UI while we poll
+            try{ showWaiting(); }catch(e){}
+            for (let i=0;i<maxAttempts;i++){
+                user = await tryGetProfile();
+                window.updateDevDebug && window.updateDevDebug('tryGetProfile', (i+1));
+                if (user && user.email) break;
+                await delay(250);
+            }
+
+            if (!user || !user.email){
+                console.warn('No user profile after polling — showing waiting panel');
+                window.updateDevDebug && window.updateDevDebug('no profile -> waiting', maxAttempts);
+                // Show waiting panel and allow user to Retry or Go back. Do NOT auto-redirect.
+                try{
+                    const wt = document.getElementById('waitingTitle'); if (wt) wt.textContent = 'Profile not yet available';
+                    const wm = document.getElementById('waitingMsg'); if (wm) wm.textContent = 'We did not find your profile yet. Click Retry to check again or Go back to return to the homepage.';
+                    showWaiting();
+                }catch(e){}
+                return;
+            }
+
+            // profile found — hide waiting UI
+            try{ hideWaiting(); }catch(e){}
+
+            const fullName = user.full_name || user.name || (user.email && user.email.split('@')[0]) || 'User';
+            document.getElementById('full_name').textContent = fullName;
+            const dn = document.getElementById('display_name'); if (dn) dn.textContent = fullName;
+            const em = document.getElementById('email'); if (em) em.textContent = user.email;
+            const emc = document.getElementById('email_copy'); if (emc) emc.textContent = user.email;
+            const r = document.getElementById('roles'); if (r) r.textContent = (user.roles && user.roles.length) ? user.roles.join(', ') : 'user';
+            const av = document.getElementById('avatar'); if (av) av.textContent = (fullName[0] || 'U').toUpperCase();
+            window.updateDevDebug && window.updateDevDebug('profile loaded: '+user.email);
+        }
+
+        // Sign out: clear tokens/session and redirect to the site's index page (relative-safe)
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const signBtn = document.getElementById('signoutBtn');
+            if (signBtn){
+                signBtn.addEventListener('click', async ()=>{
+                    try{
+                        if (window.authHandler && typeof window.authHandler.clearAuth === 'function'){
+                            await window.authHandler.clearAuth();
+                        } else if (window.qufinAuth && typeof window.qufinAuth.clearToken === 'function'){
+                            window.qufinAuth.clearToken();
+                        } else {
+                            // best-effort local cleanup
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('qufin_token');
+                            localStorage.removeItem('authToken');
+                            localStorage.removeItem('isLoggedIn');
+                            localStorage.removeItem('qufin_session');
+                            localStorage.removeItem('authEmail');
+                        }
+                    }catch(e){ console.warn('Signout cleanup error', e); }
+                    window.updateDevDebug && window.updateDevDebug('signed out -> redirect');
+                    // Redirect to index.html relative to current page
+                    window.location.href = new URL('../index.html', location.href).href;
+                });
+            }
+
+            // Update header/login controls using the centralized handler if present
+            try {
+                if (window.authHandler && typeof window.authHandler.updateAuthButtonText === 'function') {
+                    window.authHandler.updateAuthButtonText();
+                }
+            } catch (e) { /* noop */ }
+
+            // Wire waiting panel controls
+            try{
+                const waiting = document.getElementById('waitingPanel');
+                const retry = document.getElementById('retryBtn');
+                const goBack = document.getElementById('goBackBtn');
+                if (retry){ retry.addEventListener('click', ()=>{ window.updateDevDebug && window.updateDevDebug('manual retry', 0); loadProfile(); }); }
+                if (goBack){ goBack.addEventListener('click', ()=>{ window.location.href = new URL('../index.html', location.href).href; }); }
+            }catch(e){/* noop */}
+        });
+
+        document.addEventListener('DOMContentLoaded', loadProfile);
+        // Helpers to show/hide waiting panel
+        function showWaiting(){
+            const w = document.getElementById('waitingPanel'); if (w) w.style.display = 'block';
+        }
+        function hideWaiting(){
+            const w = document.getElementById('waitingPanel'); if (w) w.style.display = 'none';
+        }
+        
+        // Change password handler - posts to backend endpoint if available
+        async function changePassword(){
+            const current = document.getElementById('current_password').value.trim();
+            const nw = document.getElementById('new_password').value.trim();
+            const confirm = document.getElementById('confirm_password').value.trim();
+            const msg = document.getElementById('changePwdMsg');
+            if (!nw || nw.length < 8){ if (msg) msg.textContent = 'New password must be at least 8 characters.'; return; }
+            if (nw !== confirm){ if (msg) msg.textContent = 'Passwords do not match.'; return; }
+
+            // find token
+            const token = localStorage.getItem('token') || localStorage.getItem('qufin_token') || null;
+            if (!token){ if (msg) msg.textContent = 'No auth token found. Please sign in again.'; return; }
+
+            try{
+                msg.textContent = 'Updating…';
+                const res = await fetch(new URL('/auth/change-password', location.origin).href, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({ current_password: current || null, new_password: nw })
+                });
+                if (!res.ok){
+                    const body = await res.json().catch(()=>({}));
+                    msg.textContent = body.detail || ('Error: ' + res.status);
+                    return;
+                }
+                msg.textContent = 'Password changed successfully.';
+                // clear inputs
+                document.getElementById('current_password').value = '';
+                document.getElementById('new_password').value = '';
+                document.getElementById('confirm_password').value = '';
+            }catch(e){
+                if (msg) msg.textContent = 'Request failed.';
+                console.warn('changePassword error', e);
+            }
+        }
+
+        // wire change password button
+        (function wireChangePwd(){
+            try{
+                const btn = document.getElementById('changePwdBtn');
+                if (btn) btn.addEventListener('click', (e)=>{ e.preventDefault(); changePassword(); });
+            }catch(e){}
+        })();
+    </script>
+    <script type="module" src="../scripts/site-init.js" defer></script>
+    <script>
+        // Ensure the header reflects authenticated state on this page.
+        // If logged in, hide the top-right Login button (we show Sign out inside the profile card).
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                if (window.authHandler && typeof window.authHandler.updateAuthButtonText === 'function') {
+                    window.authHandler.updateAuthButtonText();
+                }
+            } catch (e) { /* noop */ }
+
+            try {
+                const loginBtn = document.getElementById('loginBtn');
+                const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' && (localStorage.getItem('token') || localStorage.getItem('qufin_token'));
+                if (isLoggedIn) {
+                    if (loginBtn) loginBtn.style.display = 'none';
+                    if (mobileLoginBtn) mobileLoginBtn.style.display = 'none';
+                } else {
+                    if (loginBtn) loginBtn.style.removeProperty('display');
+                    if (mobileLoginBtn) mobileLoginBtn.style.removeProperty('display');
+                }
+            } catch (e) { /* noop */ }
+        });
+    </script>
+</body>
+</html>

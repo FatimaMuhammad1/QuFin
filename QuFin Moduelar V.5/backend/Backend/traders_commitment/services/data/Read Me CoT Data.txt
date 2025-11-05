@@ -1,0 +1,2 @@
+Copy the file CoT_2006_2022.xlsx from the main here in the file in this folder.
+Path: Bankend-Python-TD-Uktam\traders_commitment\services\data

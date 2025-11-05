@@ -1,1 +1,0 @@
-"""QuFin FastAPI app package"""

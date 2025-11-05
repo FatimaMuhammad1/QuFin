@@ -672,6 +672,19 @@ body {
             justify-content: center;
             color: white;
             font-weight: bold;
+
+            /* Hide default page-provided login buttons site-wide when we use a centralized auth control */
+            #loginBtn, #mobileLoginBtn {
+                display: none !important;
+            }
+
+            /* Hide the entire site header when the project owner requests it. This is reversible by removing these rules. */
+            header {
+                display: none !important;
+                height: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
             margin-right: 12px;
         }
         .logo-text {

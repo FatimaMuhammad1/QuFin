@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: sh -c "gunicorn core.wsgi:application --bind 0.0.0.0:${PORT:-8500} --log-level debug"
+    volumes:
+      - ./static:/home/user/web/static
+      - ./media:/home/user/web/media
+    ports:
+      - "${PORT:-8500}:${PORT:-8500}"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      # - selenium
+      # - redis
+    logging:
+      options:
+        max-size: 10m
+
+  db:
+    image: postgres:16rc1-bullseye
+    volumes:
+      - ${POSTGRES_DATA}:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    ports:
+      - "5454:5454"
+    command: -p 5454
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=${SQL_DB}
+      - POSTGRES_USER=${SQL_USER}
+      - POSTGRES_PASSWORD=${SQL_PASSWORD}
+    logging:
+      options:
+        max-size: 10m
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+
+  celery:
+    build: .
+    volumes:
+      - .:/home/user/web/
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+      - web
+    command: celery --app core worker --loglevel=debug --without-mingle --without-gossip
+
+  selenium:
+    image: selenium/standalone-chrome
+    shm_size: 2gb
+    privileged: true
+    ports:
+      - 4444:4444
+      - 7900:7900
+    expose:
+      - 4444
+      - 7900

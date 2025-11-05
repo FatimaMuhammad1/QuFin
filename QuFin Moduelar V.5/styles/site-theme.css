@@ -1,0 +1,264 @@
+/* Extracted site-wide theme from root index.html */
+:root {
+    --quantum-blue: #0ea5e9;
+    --ai-purple: #8b5cf6;
+    --data-green: #10b981;
+    --risk-orange: #f59e0b;
+    --dark-bg: #0f172a;
+    --dark-card: #1e293b;
+    --dark-text: #f1f5f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+body.dark {
+    background-color: #0f172a;
+    color: var(--dark-text);
+}
+
+/* Hero section with gradient */
+.hero {
+    background: linear-gradient(135deg, #05374e 0%, #0ea5e9 50%, #8b5cf6 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+/* Content section styling */
+.content-section {
+    background-color: #0f172a;
+    color: var(--dark-text);
+    padding: 4rem 0;
+}
+
+/* Card styling in dark sections */
+.feature-card,
+.resource-card {
+    background-color: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover,
+.resource-card:hover {
+    transform: translateY(-5px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: white;
+    color: #0f172a;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+header .nav-item,
+header .nav-link,
+header a {
+    color: #0f172a;
+    transition: color 0.3s ease;
+}
+
+/* Dark mode styles - with !important to ensure they take effect */
+html.dark header,
+body.dark header {
+    background-color: #0f172a !important;
+    color: white !important;
+}
+
+html.dark header .nav-item,
+html.dark header .nav-link,
+html.dark header a,
+body.dark header .nav-item,
+body.dark header .nav-link,
+body.dark header a {
+    color: white !important;
+}
+
+/* Navigation hover states */
+header .nav-item:hover,
+header .nav-link:hover {
+    color: var(--quantum-blue);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 2.50rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--quantum-blue), var(--ai-purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: white;
+    font-size: 20px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--quantum-blue), var(--ai-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-desktop {
+    display: flex;
+    gap: 8px;
+}
+
+@media (max-width: 1024px) {
+    .nav-desktop {
+        display: none;
+    }
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: rgba(14, 165, 233, 0.1);
+}
+
+body.dark .nav-link:hover {
+    background-color: rgba(14, 165, 233, 0.2);
+}
+
+.nav-link i {
+    margin-right: 8px;
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-width: 800px;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 12px 12px;
+    padding: 24px;
+    display: none;
+    z-index: 1000;
+}
+
+body.dark .mega-menu {
+    background: var(--dark-card);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item:hover .mega-menu {
+    display: block;
+}
+
+.nav-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.nav-category h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--quantum-blue);
+}
+
+.nav-category ul { list-style: none; }
+.nav-category li { margin-bottom: 8px; }
+.nav-category a { color: #64748b; text-decoration: none; transition: color 0.2s; }
+body.dark .nav-category a { color: #94a3b8; }
+.nav-category a:hover { color: var(--quantum-blue); }
+
+.header-actions { display:flex; align-items:center; gap:16px; }
+.theme-toggle { padding:8px; border-radius:50%; background:none; border:none; cursor:pointer; color:#64748b; }
+.theme-toggle:hover { background: rgba(0,0,0,0.05); color:#0f172a; }
+body.dark .theme-toggle:hover { background: rgba(255,255,255,0.1); color:#f1f5f9; }
+.btn-primary { padding:10px 20px; background:var(--quantum-blue); color:white; border:none; border-radius:6px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; }
+.btn-primary:hover { background:#0284c7; }
+.mobile-toggle { display:none; background:none; border:none; font-size:24px; cursor:pointer; color:inherit; }
+@media (max-width:1024px) { .mobile-toggle { display:block; } }
+.mobile-menu { position: fixed; top: 72px; left:0; right:0; background:white; padding:20px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1); z-index:999; display:none; border-bottom-left-radius:12px; border-bottom-right-radius:12px; }
+body.dark .mobile-menu { background: var(--dark-card); }
+.mobile-menu.open { display:block; }
+.mobile-nav { display:flex; flex-direction:column; gap:12px; }
+.mobile-nav-item { padding:12px; border-radius:6px; }
+.mobile-nav-item:hover { background-color: rgba(14,165,233,0.1); }
+body.dark .mobile-nav-item:hover { background-color: rgba(14,165,233,0.2); }
+.mobile-nav-link { display:flex; align-items:center; text-decoration:none; color:inherit; }
+.mobile-nav-link i { margin-right:12px; width:20px; }
+
+/* Hero + other sections (kept minimal here; index-level styles remain in index.html for page-specific widgets like map) */
+.hero { background: linear-gradient(135deg, #05374e 0%, #0ea5e9 50%, #8b5cf6 100%); color:white; padding:80px 0; position:relative; overflow:hidden; }
+.hero-content { position:relative; z-index:2; text-align:center; max-width:800px; margin:0 auto; }
+.btn-white { padding:12px 32px; background:white; color:var(--quantum-blue); border:none; border-radius:6px; font-weight:600; cursor:pointer; }
+.btn-outline-white { padding:12px 32px; background:transparent; color:white; border:2px solid white; border-radius:6px; font-weight:600; }
+
+/* Tooltip for world map */
+.country-tooltip { position:absolute; padding:12px 16px; background:rgba(0,0,0,0.85); color:#ffffff; border-radius:8px; pointer-events:none; font-size:14px; z-index:10000; backdrop-filter: blur(4px); border:1px solid rgba(255,255,255,0.08); max-width:260px; line-height:1.4; box-shadow:0 10px 15px -3px rgba(0,0,0,0.2); }
+
+/* Auth modal basics (index contains full details) */
+.auth-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:2000; justify-content:center; align-items:center; }
+.auth-modal.open { display:flex; }
+
+/* Footer basics */
+footer { background: #1e293b; color:#94a3b8; padding:60px 0 30px; }
+
+/* small utilities to avoid conflicts */
+.container img.logo-img { height:1.5625rem; }

@@ -1,0 +1,88 @@
+/* header-theme.css
+   Centralized header & hero styles to match `index.html`.
+   Uses the exact hero gradient and key variables from index.html.
+*/
+:root{
+  --quantum-blue: #0ea5e9;
+  --ai-purple: #8b5cf6;
+  --dark-bg: #0f172a;
+  --dark-card: #1e293b;
+  --dark-text: #f1f5f9;
+}
+
+/* Header */
+header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+body.dark header{ background-color: var(--dark-card); }
+.header-content{ display:flex; justify-content:space-between; align-items:center; padding:16px 20px; }
+.logo-container{ display:flex; align-items:center }
+.logo-icon{ width:40px; height:40px; border-radius:8px; background: linear-gradient(135deg, var(--quantum-blue), var(--ai-purple)); display:flex; align-items:center; justify-content:center; color:#fff }
+.logo-text{ font-size:24px; font-weight:700; background: linear-gradient(135deg, var(--quantum-blue), var(--ai-purple)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent }
+
+/* Desktop nav helpers */
+.nav-desktop{ display:flex; gap:8px }
+@media (max-width:1024px){ .nav-desktop{ display:none } }
+
+/* Buttons */
+.btn-primary{ padding:10px 20px; background:var(--quantum-blue); color:#fff; border:none; border-radius:6px }
+.btn-white{ padding:12px 32px; background:#fff; color:var(--quantum-blue); border-radius:6px }
+.btn-outline-white{ padding:12px 32px; background:transparent; color:#fff; border:2px solid #fff; border-radius:6px }
+
+/* Hero / masthead: exact gradient from index.html */
+.hero{
+  background: linear-gradient(135deg, #05374e 0%, #0ea5e9 50%, #8b5cf6 100%);
+  color: #ffffff;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(14,165,233,0.2) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(139,92,246,0.2) 0%, transparent 50%);
+  z-index: 1;
+}
+.hero-content{ position:relative; z-index:2; text-align:center; max-width:800px; margin:0 auto }
+.hero h1{ font-size:48px; font-weight:700; margin-bottom:24px; line-height:1.2 }
+.hero p{ font-size:20px; margin-bottom:40px; opacity:0.9; line-height:1.6 }
+.hero-actions{ display:flex; justify-content:center; gap:16px; margin-bottom:60px }
+
+/* Also apply same styles to .hero-gradient used by other pages */
+.hero-gradient{
+  background: linear-gradient(135deg, #05374e 0%, #0ea5e9 50%, #8b5cf6 100%) !important;
+  color: #ffffff !important;
+  padding: 80px 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.hero-gradient::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(14,165,233,0.2) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(139,92,246,0.2) 0%, transparent 50%);
+  z-index: 1;
+}
+.hero-gradient .max-w-6xl, .hero-gradient .hero-content{ position:relative; z-index:2 }
+.hero-content{ position:relative; z-index:2; text-align:center; max-width:800px; margin:0 auto }
+.hero h1{ font-size:48px; font-weight:700; margin-bottom:24px; line-height:1.2 }
+.hero p{ font-size:20px; margin-bottom:40px; opacity:0.9; line-height:1.6 }
+.hero-actions{ display:flex; justify-content:center; gap:16px; margin-bottom:60px }
+
+@media (max-width:800px){
+  .hero h1{ font-size:30px }
+  .hero p{ font-size:15px }
+}
+
+/* dark-mode helpers */
+.theme-dark .site-header, .dark .site-header{ background:#0b1220 }
+
+/* end */

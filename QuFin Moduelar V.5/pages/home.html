@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function(){try{const t=localStorage.getItem('theme');const p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches; if(t==='dark'||(!t&&p))document.documentElement.classList.add('dark')}catch(e){}})();</script>
     <title>QuFin - Home</title>
     <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/i18n.css">
     <link rel="stylesheet" href="../styles/fontawesome-free-7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/site-theme.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -20,30 +23,65 @@
     </script>
 </head>
 <body class="bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100">
-    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="logo-container p-1 rounded-lg">
-                    <!-- Add a background to make white logo visible -->
-                    <img src="../assets/logos/qufin-logo.png" alt="QuFin Logo" class="logo-img" style="height:1.5625rem; background:#222; border-radius:8px; padding:4px;">
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-brain"></i></div>
+                    <div class="logo-text">QuFin.ai</div>
+                </div>
+
+                <nav class="nav-desktop">
+                    <div class="nav-item">
+                        <span class="nav-link nav-parent" role="button" tabindex="0">
+                            <i class="fas fa-chart-line"></i>
+                            AI Analytics
+                        </span>
+                    </div>
+                    <div class="nav-item">
+                        <a href="aistrategies.html" class="nav-link">
+                            <i class="fas fa-robot"></i>
+                            Trading Intelligence
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="product.html" class="nav-link">
+                            <i class="fas fa-cube"></i>
+                            AI Products
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="globaldata.html" class="nav-link">
+                            <i class="fas fa-globe"></i>
+                            Global Data
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="resources.html" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            Resources
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                    <button class="btn-primary" id="loginBtn"><i class="fas fa-user"></i> Login</button>
+                    <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-1">
-                <!-- Navigation links use absolute paths for cross-page navigation. -->
-                <!-- All links start with /QuFin%20Moduelar%20V.5/ for consistent navigation from any page. -->
-                <a href="/QuFin%20Moduelar%20V.5/index.html" class="nav-link"><i class="fa-solid fa-home mr-2"></i>Home</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/product.html" class="nav-link"><i class="fa-solid fa-box mr-2"></i>Products</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/pricing.html" class="nav-link"><i class="fa-solid fa-dollar-sign mr-2"></i>Pricing</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/aiscoregrid.html" class="nav-link"><i class="fa-solid fa-chart-line mr-2"></i>AI Score Grid</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/aistrategies.html" class="nav-link"><i class="fa-solid fa-cogs mr-2"></i>AI Strategies</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/globaldata.html" class="nav-link"><i class="fa-solid fa-globe mr-2"></i>Global Data</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/resources.html" class="nav-link"><i class="fa-solid fa-book mr-2"></i>Resources</a>
-                <a href="/QuFin%20Moduelar%20V.5/pages/reports.html" class="nav-link"><i class="fa-solid fa-file-alt mr-2"></i>Reports</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <!-- Login/Logout button will be updated by JS below -->
-                <button id="authBtn" class="px-4 py-2 bg-primary-500 text-white rounded-lg flex items-center"><i class="fa-solid fa-user mr-2"></i><span id="authBtnText">Login</span></button>
-                <button class="md:hidden p-2 rounded-lg"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="container">
+                <nav class="mobile-nav">
+                    <div class="mobile-nav-item"><a href="aiscoregrid.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i> AI Analytics</a></div>
+                    <div class="mobile-nav-item"><a href="aistrategies.html" class="mobile-nav-link"><i class="fas fa-robot"></i> Trading Intelligence</a></div>
+                    <div class="mobile-nav-item"><a href="product.html" class="mobile-nav-link"><i class="fas fa-cube"></i> AI Products</a></div>
+                    <div class="mobile-nav-item"><a href="globaldata.html" class="mobile-nav-link"><i class="fas fa-globe"></i> Global Data</a></div>
+                    <div class="mobile-nav-item"><a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a></div>
+                    <div class="mobile-nav-item"><button class="btn-primary" style="width:100%; justify-content:center;" id="mobileLoginBtn"><i class="fas fa-user"></i> Login</button></div>
+                </nav>
             </div>
         </div>
     </header>
@@ -129,7 +167,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 mb-4">
                 <div class="lg:col-span-2">
                     <div class="flex items-center mb-2">
-                        <img src="../assets/logos/qufin-logo.png" alt="QuFin Logo" class="logo-img" style="height:1.5625rem">
+                        <a href="../index.html"><img src="../assets/logos/qufin-logo.png" alt="QuFin Logo" class="logo-img" style="height:1.5625rem"></a>
                     </div>
                     <p class="mb-6 max-w-md">AI-powered trading intelligence platform providing cutting-edge analytics and alternative data signals for modern investors.</p>
                     <div class="flex space-x-4">
@@ -142,7 +180,7 @@
                 <div>
                     <h3 class="text-white text-lg font-semibold mb-4" data-i18n="products.title">Products</h3>
                     <ul class="space-y-3">
-                        <li><a href="product.html" class="hover:text-white transition">AI Score Grid</a></li>
+                        <li><a href="product.html" class="hover:text-white transition"><span data-i18n="nav.ai_score_grid">AI Score Grid</span></a></li>
                         <li><a href="product.html" class="hover:text-white transition">Market Data</a></li>
                         <li><a href="aistrategies.html" class="hover:text-white transition">Trading Strategies</a></li>
                         <li><a href="product.html" class="hover:text-white transition">Backtesting</a></li>
@@ -174,28 +212,43 @@
         </div>
     </footer>
 
-    <script src="../main.js"></script>
+    <script src="../scripts/i18n-enhanced.js"></script>
+    <script src="../scripts/auth-handler.js"></script>
     <script>
-    // Show 'Logout' if logged in, otherwise 'Login'
-    document.addEventListener('DOMContentLoaded', function() {
-        var authBtn = document.getElementById('authBtn');
-        var authBtnText = document.getElementById('authBtnText');
-        if (!authBtn || !authBtnText) return;
-        if (localStorage.getItem('qufin_token')) {
-            authBtnText.textContent = 'Logout';
+        // Listen for language changes
+        window.addEventListener('languagechange', (e) => {
+            const isRTL = window.i18n.getDirection() === 'rtl';
+            
+            // Update icon margins based on direction
+            document.querySelectorAll('.nav-link i').forEach(icon => {
+                icon.classList.remove('mr-2', 'ml-2');
+                icon.classList.add(isRTL ? 'ml-2' : 'mr-2');
+            });
+            
+            // Update any direction-sensitive UI elements
+            document.querySelectorAll('.flex').forEach(flex => {
+                if (flex.classList.contains('items-center')) {
+                    flex.classList.toggle('flex-row-reverse', isRTL);
+                }
+            });
+        });
+
+        // Handle auth button clicks
+        const authBtn = document.getElementById('authBtn');
+        if (authBtn) {
             authBtn.onclick = function() {
-                localStorage.removeItem('qufin_token');
-                authBtnText.textContent = 'Login';
-                alert('Logged out');
-            };
-        } else {
-            authBtnText.textContent = 'Login';
-            authBtn.onclick = function() {
-                // Show login modal or redirect
-                alert('Show login modal or redirect to login page');
+                const isLoggedIn = localStorage.getItem('qufin_token');
+                if (isLoggedIn) {
+                    localStorage.removeItem('qufin_token');
+                    window.authHandler.updateAuthButtonText(false);
+                    alert('Logged out');
+                } else {
+                    // Show login modal or redirect
+                    alert('Show login modal or redirect to login page');
+                }
             };
         }
-    });
     </script>
+    <script type="module" src="../scripts/site-init.js" defer></script>
 </body>
 </html>

@@ -27,14 +27,34 @@ async function apiPost(path, body, token) {
   return res.json();
 }
 
+// Update signup function to handle token and OTP verification
 export async function signup(email, password) {
   console.log('Attempting signup with:', { email });
   try {
     const response = await apiPost('/auth/signup', { email, password });
     console.log('Signup response:', response);
+
+    if (response.token) {
+      // Use central auth handler when available
+      if (window.authHandler && typeof window.authHandler.setAuthToken === 'function') {
+        window.authHandler.setAuthToken(response.token);
+      } else {
+        localStorage.setItem('authToken', response.token);
+        localStorage.setItem('qufin_token', response.token);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('isLoggedIn', 'true');
+      }
+
+      // Redirect to OTP verification page
+      window.location.href = 'http://127.0.0.1:5500/QuFin%20Moduelar%20V.5/pages/otp-verification.html';
+    } else {
+      alert('Signup failed. Please try again.');
+    }
+
     return response;
   } catch (error) {
     console.error('Signup error:', error);
+    alert('An error occurred during signup.');
     throw error;
   }
 }
@@ -88,8 +108,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = form.querySelector('input[name="email"]')?.value || document.getElementById('login-email')?.value;
       const password = form.querySelector('input[name="password"]')?.value || document.getElementById('login-password')?.value;
       const res = await login(email, password);
-      if (res.access_token) {
-        localStorage.setItem('qufin_token', res.access_token);
+      // Accept both `token` and `access_token` to support different backend shapes
+      if (res && (res.token || res.access_token)) {
+        const token = res.token || res.access_token;
+        if (window.authHandler && typeof window.authHandler.setAuthToken === 'function') {
+          window.authHandler.setAuthToken(token);
+        } else {
+          localStorage.setItem('qufin_token', token);
+          localStorage.setItem('token', token);
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('qufin_session', '1');
+        }
         alert('Logged in');
         // Hide login button, show logout button
         document.querySelectorAll('.login-btn').forEach(btn => btn.style.display = 'none');
@@ -109,7 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Logout button logic
   document.querySelectorAll('.logout-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      localStorage.removeItem('qufin_token');
+      // Use central clear if available
+      if (window.authHandler && typeof window.authHandler.clearAuth === 'function') {
+        window.authHandler.clearAuth();
+      } else {
+        localStorage.removeItem('qufin_token');
+        localStorage.removeItem('token');
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('qufin_session');
+      }
       // Hide logout, show login
       document.querySelectorAll('.logout-btn').forEach(b => b.style.display = 'none');
       document.querySelectorAll('.login-btn').forEach(b => b.style.display = 'inline-flex');
