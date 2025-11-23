@@ -1,0 +1,56 @@
+# Consolidated requirements for the QuFin project
+# Notes:
+# - On Windows, installing `psycopg2-binary` may require PostgreSQL's pg_config
+#   (see README or install instructions). If you run into build errors, either
+#   install PostgreSQL (add its `bin` to PATH) or use a Python version with
+#   prebuilt wheels (e.g. 3.11), or install `psycopg[binary]` instead.
+# - Adjust versions if you have compatibility constraints. This file aims to
+#   cover the packages used across the repository (Django apps and FastAPI app).
+
+fastapi>=0.95
+uvicorn[standard]>=0.22
+pydantic>=2.0
+python-dotenv>=1.0.1
+
+# Django + REST
+Django==3.2.9
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.2.2
+django-cors-headers==3.14.0
+
+# Database
+psycopg2-binary==2.9.5
+
+# Data + Excel
+pandas==2.0.3
+openpyxl==3.0.10
+pyexcel==0.7.0
+pyexcel-xls==0.7.0
+pyexcel-xlsx==0.6.0
+xlrd==2.0.1
+xlwt==1.3.0
+
+# HTTP / scraping / automation
+beautifulsoup4==4.11.2
+httpx==0.24.1
+selenium==4.7.2
+
+# Background tasks / broker
+celery==5.2.7
+redis==4.5.4
+
+# Validation / utils
+pydantic==2.0
+python-dateutil==2.8.2
+
+# Testing & quality
+pytest==7.3.1
+pytest-django==4.5.2
+black==23.1.0
+flake8==6.0.0
+isort==5.12.0
+pyflakes==3.0.1
+
+# Misc
+orm-choices==1.0.0
+psycopg2==2.9.5
